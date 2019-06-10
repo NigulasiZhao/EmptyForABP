@@ -20,7 +20,7 @@ namespace AfarsoftResourcePlan.Web.Startup
 
         public override void PreInitialize()
         {
-            Configuration.Navigation.Providers.Add<AfarsoftResourcePlanNavigationProvider>();
+            //Configuration.Navigation.Providers.Add<AfarsoftResourcePlanNavigationProvider>();
         }
 
         public override void Initialize()

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Navigation;
 using Abp.Runtime.Session;
+using AfarsoftResourcePlan.Sessions;
 
 namespace AfarsoftResourcePlan.Web.Views.Shared.Components.SideBarNav
 {
@@ -9,20 +10,23 @@ namespace AfarsoftResourcePlan.Web.Views.Shared.Components.SideBarNav
     {
         private readonly IUserNavigationManager _userNavigationManager;
         private readonly IAbpSession _abpSession;
+        private readonly ISessionAppService _sessionAppService;
 
         public SideBarNavViewComponent(
             IUserNavigationManager userNavigationManager,
-            IAbpSession abpSession)
+            IAbpSession abpSession,
+            ISessionAppService sessionAppService)
         {
             _userNavigationManager = userNavigationManager;
             _abpSession = abpSession;
+            _sessionAppService = sessionAppService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string activeMenu = "")
         {
             var model = new SideBarNavViewModel
             {
-                MainMenu = await _userNavigationManager.GetMenuAsync("MainMenu", _abpSession.ToUserIdentifier()),
+                MainMenu = _sessionAppService.GetPCNavigation().Result.Data,
                 ActiveMenuItemName = activeMenu
             };
 

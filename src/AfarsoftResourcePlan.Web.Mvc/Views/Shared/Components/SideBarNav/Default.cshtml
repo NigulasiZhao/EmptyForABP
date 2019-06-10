@@ -19,68 +19,40 @@
     });
 }
 <div class="menu">
-    <ul class="list">
-        @foreach (var menuItem in Model.MainMenu.Items)
-        {
-            <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
-                @if (menuItem.Items.IsNullOrEmpty())
+    <div class="submenu">
+        <div id="js-menu" class="submenulist">
+            <ul>
+                @foreach (var menuItem in Model.MainMenu)
                 {
-                    <a href="@calculateMenuUrl(menuItem.Url)">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
+                    <li>
+                        <a href="#"><i class="iconfont @menuItem.Icon"></i>@menuItem.DisplayName</a>
+                        <div class="listbox hide">
+                            @foreach (var item in menuItem.Items)
+                            {
+                                <dl class="hotbrand">
+                                    <dt><span class="group-title"></span>@item.DisplayName</dt>
+                                    @foreach (var subItem in item.Items)
+                                    {
+                                        <dd>
+                                            <a href="#" onclick="clickLeftNav('@subItem.Name','@subItem.DisplayName','@subItem.Url','',false,this)">@subItem.DisplayName</a>
+                                            @{
+                                                List<Abp.Application.Navigation.MenuItemDefinition> rightMenuItemDefinitions =
+                                                    subItem.CustomData as List<Abp.Application.Navigation.MenuItemDefinition>;
+                                            }
+                                            @foreach (var rightItem in rightMenuItemDefinitions)
+                                            {
+                                                <span class="subtext" onclick="clickLeftNav('@rightItem.Name','@L(rightItem.CustomData.ToString())','@rightItem.Url','',false,this)">@L(rightItem.CustomData.ToString())</span>
+                                            }
+                                        </dd>
+
+                                    }
+                                </dl>
+                            }
+                        </div>
+                    </li>
                 }
-                else
-                {
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
-                    <ul class="ml-menu">
-                        @foreach (var subMenuItem in menuItem.Items)
-                        {
-                            <li class="@(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
-                                @if (subMenuItem.Items.IsNullOrEmpty())
-                                {
-                                    <a href="@calculateMenuUrl(subMenuItem.Url)">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        @foreach (var subSubMenuItem in subMenuItem.Items)
-                                        {
-                                            <li class="@(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")">
-                                                <a href="@calculateMenuUrl(subSubMenuItem.Url)">
-                                                    @subSubMenuItem.DisplayName
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
-                                }
-                            </li>
-                        }
-                    </ul>
-                }
-            </li>
-        }
-    </ul>
+            </ul>
+        </div>
+    </div>
+
 </div>
