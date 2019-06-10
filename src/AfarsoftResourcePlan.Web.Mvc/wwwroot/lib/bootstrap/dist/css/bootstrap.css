@@ -2518,7 +2518,7 @@ input[type="search"] {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   margin-top: 1px \9;
   line-height: normal;
 }
@@ -5947,7 +5947,7 @@ button.close {
   padding: 15px;
 }
 .modal-footer {
-  padding: 15px;
+  padding: 25px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
@@ -6522,9 +6522,9 @@ button.close {
 .pull-left {
   float: left !important;
 }
-.hide {
+/*.hide {
   display: none !important;
-}
+}*/
 .show {
   display: block !important;
 }
