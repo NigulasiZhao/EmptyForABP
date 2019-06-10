@@ -1,143 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <items>
   <menu name="base" displayName="nav_base" icon="iconziliao1" url="" requiredPermissionName="Permission_base">
-    <subTitle>
-      <menu name="base_recovery" displayName="nav_base_recovery" icon="" url="" requiredPermissionName="Permission_recovery">
-        <subItems>
-          <menu name="base_recovery_car" displayName="nav_base_recovery_car" icon="" url="/Car" requiredPermissionName="Permission_recovery_car">
-          </menu>
-          <menu name="base_recovery_serviceArea" displayName="nav_base_recovery_serviceArea" icon="" url="/ServiceArea" requiredPermissionName="Permission_recovery_serviceArea">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
+    
     <subTitle>
       <menu name="base_ErpBasicInfo" displayName="nav_base_ErpBasicInfo" icon="" url="" requiredPermissionName="Permission_ErpBasicInfo">
         <subItems>
-          <menu name="base_Erp_AreaInfo" displayName="nav_base_Erp_AreaInfo" icon="" url="/AreaInfo" requiredPermissionName="Permission_Erp_AreaInfo">
+          <menu name="base_Erp_Customer" displayName="nav_base_Erp_Customer" icon="" url="/FrontEndTest/CustomerIndex" requiredPermissionName="Permission_Erp_Customer">
           </menu>
-          <menu name="base_Erp_Customer" displayName="nav_base_Erp_Customer" icon="" url="/Customer/CustomerIndex" requiredPermissionName="Permission_Erp_Customer">
+          <menu name="base_Erp_Organization" displayName="nav_base_Erp_Organization" icon="" url="/FrontEndTest/OrganizationIndex" requiredPermissionName="Permission_Erp_Organization">
           </menu>
-          <menu name="base_Erp_Organization" displayName="nav_base_Erp_Organization" icon="" url="/Organization/OrganizationIndex" requiredPermissionName="Permission_Erp_Organization">
+          <menu name="base_Erp_UserInfo" displayName="nav_base_Erp_UserInfo" icon="" url="/FrontEndTest/UsersIndex" requiredPermissionName="Permission_Erp_UserInfo">
           </menu>
-          <menu name="base_Erp_UserInfo" displayName="nav_base_Erp_UserInfo" icon="" url="/Users" requiredPermissionName="Permission_Erp_UserInfo">
+          <menu name="base_Erp_Warehouse" displayName="nav_base_Erp_Warehouse" icon="" url="/FrontEndTest/WarehouseIndex" requiredPermissionName="Permission_Erp_Warehouse">
           </menu>
-          <menu name="base_Erp_Warehouse" displayName="nav_base_Erp_Warehouse" icon="" url="/Warehouses/WarehouseIndex" requiredPermissionName="Permission_Erp_Warehouse">
+          <menu name="base_Erp_Supplier" displayName="nav_base_Erp_Supplier" icon="" url="/FrontEndTest/SupplierIndex" requiredPermissionName="Permission_Erp_Supplier">
           </menu>
-          <menu name="base_Erp_Supplier" displayName="nav_base_Erp_Supplier" icon="" url="/Supplier/SupplierIndex" requiredPermissionName="Permission_Erp_Supplier">
+          <menu name="base_Erp_Roles" displayName="nav_base_Erp_Roles" icon="" url="/FrontEndTest/RolesIndex" requiredPermissionName="Permission_Erp_Roles">
           </menu>
-          <menu name="base_Erp_Roles" displayName="nav_base_Erp_Roles" icon="" url="/Roles" requiredPermissionName="Permission_Erp_Roles">
+          <menu name="sale_saleOrder_newsaleOrder" displayName="nav_sale_saleOrder_newsaleOrder" icon="" url="/FrontEndTest/NewSaleOrder" requiredPermissionName="Permission_Sale_NewSaleOrder">
           </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-    <subTitle>
-      <menu name="base_ErpGoodsInfo" displayName="nav_base_ErpGoodsInfo" icon="" url="" requiredPermissionName="Permission_ErpGoodsInfo">
-        <subItems>
-          <menu name="base_Erp_GoodsInfo" displayName="nav_base_Erp_GoodsInfo" icon="" url="/Goods/GoodsIndex" requiredPermissionName="Permission_Erp_GoodsInfo">
-          </menu>
-          <menu name="base_Erp_GoodsPrice" displayName="nav_base_Erp_GoodsPrice" icon="" url="/GoodsPrice/GoodsPriceIndex" requiredPermissionName="Permission_Erp_GoodsPrice">
+          <menu name="sale_saleOrder_saleOrderList" displayName="nav_sale_saleOrder_saleOrderList" icon="" url="/FrontEndTest/SaleOrderList" requiredPermissionName="Permission_Sale_SaleOrderList">
           </menu>
         </subItems>
       </menu>
-    </subTitle>
-  </menu>
-  <menu name="recovery" displayName="nav_recovery" icon="iconhuishou" url="" requiredPermissionName="">
-    <subTitle>
-      <menu name="recovery_member" displayName="nav_recovery_member" icon="" url="" requiredPermissionName="">
-        <subItems>
-          <menu name="recovery_member_memberList" displayName="nav_recovery_memberList" icon="" url="/member" requiredPermissionName="Permission_recovery_memberList">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-    <subTitle>
-      <menu name="recovery_serviceArea" displayName="nav_recovery_serviceArea" icon="" url="" requiredPermissionName="">
-        <subItems>
-          <menu name="recovery_serviceArea_recoveryLog" displayName="nav_recovery_recoveryLog" icon="" url="/recovery" requiredPermissionName="Permission_recovery_recoveryLog">
-          </menu>
-          <menu name="recovery_serviceArea_goodspackLog" displayName="nav_recovery_goodspackLog" icon="" url="/goodspack" requiredPermissionName="Permission_recovery_goodpackLog">
-          </menu>
-          <menu name="recovery_serviceArea_scoreLog" displayName="nav_recovery_scoreLog" icon="" url="/score" requiredPermissionName="Permission_recovery_scoreLog">
-          </menu>
-          <menu name="recovery_serviceArea_scoreConsume" displayName="nav_recovery_scoreConsume" icon="" url="/score/Consumelog" requiredPermissionName="Permission_recovery_scoreConsume">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-    <subTitle>
-      <menu name="recovery_driver" displayName="nav_recovery_driver" icon="" url="" requiredPermissionName="">
-        <subItems>
-          <menu name="recovery_driver_entruckLog" displayName="nav_recovery_entruckLog" icon="" url="/entruck" requiredPermissionName="Permission_recovery_entruckLog">
-          </menu>
-          <menu name="recovery_driver_detruckLog" displayName="nav_recovery_detruckLog" icon="" url="/detruck" requiredPermissionName="Permission_recovery_detruckLog">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-  </menu>
-  <menu name="sale" displayName="nav_sale" icon="iconxiaoshou" url="" requiredPermissionName="Permission_sale">
-    <subTitle>
-      <menu name="sale_saleOrder" displayName="nav_sale_saleOrder" icon="" url="" requiredPermissionName="Permission_Sale_SaleOrder">
-        <subItems>
-          <menu name="sale_saleOrder_newsaleOrder" displayName="nav_sale_saleOrder_newsaleOrder" icon="" url="/Sale/NewSaleOrder" requiredPermissionName="Permission_Sale_NewSaleOrder">
-          </menu>
-          <menu name="sale_saleOrder_saleOrderList" displayName="nav_sale_saleOrder_saleOrderList" icon="" url="/Sale/SaleOrderList" requiredPermissionName="Permission_Sale_SaleOrderList">
-          </menu>
-        </subItems>
-      </menu>
-      <menu name="sale_saleOutOrder" displayName="nav_sale_saleOutOrder" icon="" url="" requiredPermissionName="Permission_Sale_SaleOutOrder">
-        <subItems>
-          <menu name="sale_saleOutOrder_newsaleOutOrder" displayName="nav_sale_saleOutOrder_newsaleOutOrder" icon="" url="/SaleOut/NewSaleOutOrder" requiredPermissionName="Permission_SaleOut_NewSaleOutOrder">
-          </menu>
-          <menu name="sale_saleOutOrder_saleOutOrderList" displayName="nav_sale_saleOutOrder_saleOutOrderList" icon="" url="/SaleOut/SaleOutOrderList" requiredPermissionName="Permission_SaleOut_SaleOutOrderList">
-          </menu>
-          <menu name="sale_saleOutOrder_saleOutOrderTally" displayName="nav_sale_saleOutOrder_saleOutOrderTally" icon="" url="/SaleOut/SaleOutOrderTally" requiredPermissionName="Permission_SaleOut_SaleOutOrderTally">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-  </menu>
-  <menu name="financial" displayName="nav_financial" icon="iconcaiwu" url="" requiredPermissionName="Permission_Financial">
-    <subTitle>
-      <menu name="financial_collection" displayName="nav_financial_collection" icon="" url="" requiredPermissionName="Permission_Financial_Collection">
-        <subItems>
-          <menu name="financial_collection_newreceivedorder" displayName="nav_financial_collection_newreceivedorder" icon="" url="/ReceivedOrder/NewReceivedOrder" requiredPermissionName="Permission_Financial_NewReceivedOrder">
-          </menu>
-          <menu name="financial_collection_receivedorderList" displayName="nav_financial_collection_receivedorderList" icon="" url="/ReceivedOrder/ReceivedOrderList" requiredPermissionName="Permission_Financial_ReceivedOrderList">
-          </menu>
-        </subItems>
-      </menu>
-      <menu name="financial_receivables" displayName="nav_financial_receivables" icon="" url="" requiredPermissionName="Permission_Financial_Receivables">
-        <subItems>
-          <menu name="financial_receivables_receivablesList" displayName="nav_financial_receivables_receivablesList" icon="" url="/Receivables/ReceivablesList" requiredPermissionName="Permission_Financial_ReceivablesList">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-  </menu>
-  <menu name="report" displayName="nav_report" icon="iconbaobiao1" url="" requiredPermissionName="Permission_report">
-    <subTitle>
-      <menu name="report_inventory" displayName="nav_report_inventory" icon="" url="" requiredPermissionName="Permission_Report_Inventory">
-        <subItems>
-          <menu name="report_inventory_warehouseinventory" displayName="nav_report_inventory_warehouseinventory" icon="" url="/WarehouseInventory/WarehouseinventoryIndex" requiredPermissionName="Permission_Report_Warehouseinventory">
-          </menu>
-        </subItems>
-      </menu>
-    </subTitle>
-  </menu>
-  <menu name="app" displayName="nav_app" icon="" url="" requiredPermissionName="Permission_app" target="app">
-    <subTitle>
-      <menu name="app_recycling" displayName="nav_app_recycling" icon="images/recycling.png" url="recycling.html" requiredPermissionName="Permission_app_recycling"></menu>
-      <menu name="app_entruck" displayName="nav_app_entruck" icon="images/loading.png" url="loading.html" requiredPermissionName="Permission_app_entruck"></menu>
-      <menu name="app_detruck" displayName="nav_app_detruck" icon="images/unloading.png" url="unloading.html" requiredPermissionName="Permission_app_detruck"></menu>
-      <menu name="app_goodsshow" displayName="nav_app_goodsshow" icon="images/classifyQuery.png" url="classifyQuery.html" requiredPermissionName="Permission_app_goodsshow"></menu>
-      <menu name="app_scoreoption" displayName="nav_app_scoreoption" icon="images/integralExchange.png" url="integralExchange.html" requiredPermissionName="Permission_app_scoreoption"></menu>
-      <menu name="app_scoresearch" displayName="nav_app_scoresearch" icon="images/integralSearch.png" url="integralSearch.html" requiredPermissionName="Permission_app_scoresearch"></menu>
-      <menu name="app_qrcode" displayName="nav_app_qrcode" icon="images/qrcode.png" url="qrcode.html" requiredPermissionName="Permission_app_qrcode"></menu>
-      <menu name="app_pack" displayName="nav_app_pack" icon="images/pack.png" url="pack.html" requiredPermissionName="Permission_app_pack"></menu>
-      <menu name="app_packsearch" displayName="nav_app_packsearch" icon="images/packSearch.png" url="packSearch.html" requiredPermissionName="Permission_app_packsearch"></menu>
-      <menu name="app_packmanagement" displayName="nav_app_packmanagement" icon="images/packManagement.png" url="pack_history.html" requiredPermissionName="Permission_app_packmanagement"></menu>
     </subTitle>
   </menu>
 </items>
