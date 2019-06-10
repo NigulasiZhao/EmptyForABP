@@ -25,7 +25,6 @@ namespace AfarsoftResourcePlan.Authorization.Users
                 EmailAddress = emailAddress,
                 Roles = new List<UserRole>()
             };
-
             user.SetNormalizedNames();
 
             return user;
