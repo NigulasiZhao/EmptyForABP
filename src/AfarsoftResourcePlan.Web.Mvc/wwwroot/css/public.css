@@ -332,6 +332,8 @@
 }
 
 .publicIpts label {
+    float:left;
+    margin-bottom:0;
     font-size: 12px !important;
     display: table-cell;
     padding-left: 6px;
@@ -353,7 +355,8 @@
 
 .SearchForm .publicIpts .textbox, .eeasyui-textbox {
     display: table-cell;
-    width: unset !important;
+    /*width: unset !important;*/
+    width: 100% !important;
 }
 
 .SearchForm button {
@@ -755,9 +758,9 @@ dl {
     margin-bottom: 5px;
 }
 
-.fullWidth > label{
+/*.fullWidth > label{
     width:80px;
-}
+}*/
 
 .datagrid-btable .treegrid-tr-tree td {
     height: auto !important;

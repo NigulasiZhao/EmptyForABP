@@ -678,15 +678,23 @@ function checkIpt(target) {
     return options;
 }
 
-function TabsChange(modal,index,isShow) {
-    var tabs = $("#" + modal + " .tab-head span");
-    var contents = $("#" + modal + " .tab-content").children("div");
+function TabsChange(modalOrDiv, index, isShow) {
+    if (modalOrDiv) {
+        var tabs = $("#" + modalOrDiv + " .tab-head span");
+        var contents = $("#" + modalOrDiv + " .tab-content").children("div");
+    } else {
+        var tabs = $ele(".tab-head span");
+        var contents = $ele(".tab-content").children("div");
+    }
+   
 
     tabs.eq(0).addClass('selected');
     tabs.eq(0).siblings().removeClass("selected");
     contents.eq(0).addClass('show');
     contents.eq(0).siblings().removeClass('show');
-    $("#addCustomerModal").modal("show");
+    if (modalOrDiv) {
+        $("#" + modalOrDiv).modal("show");
+    }
 
 
     (function changeTab(tab) {

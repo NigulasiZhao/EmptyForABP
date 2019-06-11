@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Web.Models;
 using AfarsoftResourcePlan.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +41,25 @@ namespace AfarsoftResourcePlan.Web.Mvc.Controllers
         public IActionResult SaleOrderList()
         {
             return View();
+        }
+        [DontWrapResult]
+        public ActionResult GetIndex()
+        {
+            var data = new List<object>(){new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+            };
+            //var total = data.Count;
+            //var footer = new List<object>(){
+            //    new { OutStorageAmount=691.1234, ReturnAmount= 0, SaleAmount= 850.6834, SaleGoodsOrderAmount= 45954.06 }
+            //};
+            return Json(data);
         }
     }
 }

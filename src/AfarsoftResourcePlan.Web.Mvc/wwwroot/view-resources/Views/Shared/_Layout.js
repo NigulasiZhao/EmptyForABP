@@ -181,23 +181,23 @@ function intToolbar(tableId) {
     var pulicToolbar = [];
     var argArr = Array.prototype.slice.call(arguments, 1);
     var toolbarAdd = {
-        text: '添加', iconCls: 'iconfont icon-tianjia', handler: function () {
+        text: '添加', iconCls: 'iconfont icontianjia', handler: function () {
             DG.insertRow('#' + tableId);
         }
     };
     var toolbarInsert = {
-        text: '插入', iconCls: 'iconfont icon-charu', handler: function () {
+        text: '插入', iconCls: 'iconfont iconcharu', handler: function () {
             DG.insertInSeleRow('#' + tableId);
         }
     };
     var toolbarDel = {
-        text: '删除', iconCls: 'iconfont icon-shanchu', handler: function () {
+        text: '删除', iconCls: 'iconfont iconshanchu', handler: function () {
 
             DG.DeleteRow('#' + tableId);
         }
     };
     var toolbarSearch = {
-        id: 'dgSearchHref', text: '<div class="dgSearch"><input id="iptSearch" onchange="DG.watchSearchInput(this)" type="text" autocomplete="off" placeholder="请输入关键字"><i class="iconfont icon-sousuo" onclick="DG.searchPosition(\'#' + tableId + '\')"></i></div>'
+        id: 'dgSearchHref', text: '<div class="dgSearch"><input id="iptSearch" onchange="DG.watchSearchInput(this)" type="text" autocomplete="off" placeholder="请输入关键字"><i class="iconfont iconsousuo" onclick="DG.searchPosition(\'#' + tableId + '\')"></i></div>'
     };
     argArr.forEach(function (item) {
         if (item == "add") {

@@ -1,9 +1,16 @@
-﻿(function () {
+﻿
     //var activeId = $("#tab-content-tabitem > .active").attr("id");
     //var $ = JQuery.noConflict();
-    var $ = function (params) {
+    //var jq = jQuery.noConflict();
+    //var $ = function (params) {
+    //    var activeId = $("#tab-content-tabitem > .active").attr("id");
+    //    //var $$ = jQuery.noConflict();
+    //    return jq("#" + activeId + " " + params)
+    //}
+
+    var $ele = function (params) {
+        //var jq = jQuery.noConflict();
         var activeId = $("#tab-content-tabitem > .active").attr("id");
-        var $$ = JQuery.noConflict();
-        return $$("#" + activeId + " " + params)
+        return $("#" + activeId + " " + params)
     }
-})();
+

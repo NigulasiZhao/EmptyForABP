@@ -22,7 +22,63 @@
     </environment>
 
     <environment names="Staging,Production">
-        <script src="~/view-resources/Views/_Bundles/home-index.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/_Bundles/home-index.min.js" asp-append-version="true"></script>@{
+
+}
+
+<form role="form" novalidate class="form-validation">
+    <div class="tab-content SearchForm tabsHiddenContent">
+        <div class="show">
+            <div class="publicIpts">
+                <label>地理位置</label>
+                <input type="text" class="easyui-textbox-map" name="lonLat" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>商品</label>
+                <input type="text" class="easyui-textbox-goods" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>员工</label>
+                <input type="text" class="easyui-textbox-user" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>客户</label>
+                <input type="text" class="easyui-textbox-customer" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>顾客</label>
+                <input type="text" class="easyui-textbox-member" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>机构</label>
+                <input type="text" class="easyui-textbox-org" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>仓库</label>
+                <input type="text" class="easyui-textbox-warehouse" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+            <div class="publicIpts">
+                <label>服务站</label>
+                <input type="text" class="easyui-textbox-servicearea" name="lonLat" value="" required="required" />
+                <input type="hidden" name="" value="" required="required" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        initMyComponent();
+
+    });
+</script>
+
     </environment>
 }
 <div class="block-header">

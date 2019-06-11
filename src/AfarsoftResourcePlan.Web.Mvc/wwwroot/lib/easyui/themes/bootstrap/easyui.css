@@ -935,9 +935,9 @@
 }
 .textbox-focused {
   border-color: #bbbbbb;
-  -moz-box-shadow: 0 0 3px 0 #D4D4D4;
+  /*-moz-box-shadow: 0 0 3px 0 #D4D4D4;
   -webkit-box-shadow: 0 0 3px 0 #D4D4D4;
-  box-shadow: 0 0 3px 0 #D4D4D4;
+  box-shadow: 0 0 3px 0 #D4D4D4;*/
 }
 .textbox-invalid {
   border-color: #ffa8a8;
