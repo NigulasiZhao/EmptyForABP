@@ -1,11 +1,12 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AfarsoftResourcePlan.BaseEntity
 {
-    public class AfarEntity<TPrimaryKey> : Entity<TPrimaryKey>
+    public class AfarEntity<TPrimaryKey> : Entity<TPrimaryKey>, IMustHaveTenant, IDeletionAudited, IHasDeletionTime, ISoftDelete
     {
         /// <summary>
         /// 编码
@@ -55,5 +56,21 @@ namespace AfarsoftResourcePlan.BaseEntity
         /// 最后修改时间
         /// </summary>
         public DateTime LastModifierTime { get; set; }
+        /// <summary>
+        /// 租户ID
+        /// </summary>
+        public int TenantId { get; set; }
+        /// <summary>
+        /// 是否删除
+        /// </summary>
+        public bool IsDeleted { get; set; }
+        /// <summary>
+        /// 删除人ID
+        /// </summary>
+        public long? DeleterUserId { get; set; }
+        /// <summary>
+        /// 删除时间
+        /// </summary>
+        public DateTime? DeletionTime { get; set; }
     }
 }
