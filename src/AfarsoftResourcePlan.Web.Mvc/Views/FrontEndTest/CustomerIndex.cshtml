@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade tabsChangeModal addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel">
+<div class="modal fade tabsChangeModal addCustomerModal1" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -215,3 +215,52 @@
     </div>
 </div>
 
+<div class="modal fade tabsChangeModal addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">选择客户</h4>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false;" name="createCustomerForm">
+                    <div class="SearchForm">
+                        <div class="show">
+                            <input type="hidden" name="id" />
+                            <input type="hidden" name="supplierId" />
+                            <input type="hidden" name="customerId" />
+                            <div class="publicIpts">
+                                <label>名称<span style="color:red">*</span></label>
+                                <input type="text" class="easyui-textbox" name="unionName" value="" required="required" />
+                            </div>
+                            <div class="publicIpts pull-right">
+                                <label>编码<span style="color:red">*</span></label>
+                                <input type="text" class="easyui-textbox" name="unionCode" value="" required="required" readonly />
+                            </div>
+                            <div class="publicIpts">
+                                <label>联系人<span style="color:red">*</span></label>
+                                <input type="text" class="easyui-textbox" name="contactName" value="" required="required" />
+                            </div>
+                            <div class="publicIpts pull-right">
+                                <label>联系电话<span style="color:red">*</span></label>
+                                <input type="text" class="easyui-textbox" name="contactNumber" value="" required="required" />
+                            </div>
+                            <div class="publicIpts">
+                                <label>助记码</label>
+                                <input type="text" class="easyui-textbox" name="helpCode" value="" />
+                            </div>
+                            <div class="publicIpts pull-right">
+                                <label>地址</label>
+                                <input type="text" class="easyui-textbox" name="address" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
