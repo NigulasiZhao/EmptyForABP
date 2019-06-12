@@ -1,6 +1,7 @@
 ﻿(function () {
     $(function () {
         var _unionInfoService = abp.services.app.unionInfo;
+
         var _$Modal = $tabs('.addCustomerModal');
         var _$form = $tabs('form[name=form1]');
         var tableId = "#CustomerTableList";
