@@ -680,11 +680,11 @@ function checkIpt(target) {
 
 function TabsChange(modalOrDiv, index, isShow) {
     if (modalOrDiv) {
-        var tabs = $("#" + modalOrDiv + " .tab-head span");
-        var contents = $("#" + modalOrDiv + " .tab-content").children("div");
+        var tabs = $tabs("."+modalOrDiv + " .tab-head span");
+        var contents = $tabs("."+modalOrDiv + " .tab-content").children("div");
     } else {
-        var tabs = $ele(".tab-head span");
-        var contents = $ele(".tab-content").children("div");
+        var tabs = $tabs(".tab-head span");
+        var contents = $tabs(".tab-content").children("div");
     }
    
 

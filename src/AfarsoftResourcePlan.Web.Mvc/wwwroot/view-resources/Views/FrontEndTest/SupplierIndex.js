@@ -2,18 +2,19 @@
     $(function () {
         var _saleOrderService = abp.services.app.saleOrder;
         var _serialNumberService = abp.services.app.serialNumber;
-        var _$form = $('form[name=newSaleOrderFormList]');
+        var _$form = $tabs('form[name=newSaleOrderFormList]');
         var editRow = 0;
         var AddProcessFlag = false;
         Adaptation();
         dateSelect();
         //_serialNumberService.getOrderCode({ orderType: 5, organizationId: $("[name='organizationId']").val() }).done(function (data) {
+        //    $tabs('#NewSaleOrderCode').text(data);
         //    $('#NewSaleOrderCode').text(data);
         //}).always(function () {
         //}).fail(function (data) {
         //});
 
-        $('#NewSaleOrderSaveButton').click(function (e) {
+        $tabs('.NewSaleOrderSaveButton').click(function (e) {
             if (AddProcessFlag) {
                 abp.message.error("单据已提交", '提示');
                 return;
@@ -93,18 +94,18 @@
 
         var activeId = $("#tab-content-tabitem > .active").attr("id");
 
-        $("#" + activeId + " .querySearch").click(function () {
+        $tabs(".querySearch").click(function () {
             console.log($(this).parent().serialize())
         })
-        $("#" + activeId + " .customer-search").click(function () {
+        $tabs(".customer-search").click(function () {
             var Search = $(this).parent().serializeObject();
             DG.setQueryParamsRequest("#customerForSaleList", Search)
         })
 
-        $("#" + activeId + " .selectCustomer").each(function () {
+        $tabs(".selectCustomer").each(function () {
             $(this).textbox($.extend({}, __customerOption, {
                 OnSelectedCustomer: function (data) {
-                    $('form[name=newSaleOrderFormList]').form('load', { payWay: data.payWay, accountDate: data.accountDate });
+                    $tabs('form[name=newSaleOrderFormList]').form('load', { payWay: data.payWay, accountDate: data.accountDate });
                 }
             }));
         });

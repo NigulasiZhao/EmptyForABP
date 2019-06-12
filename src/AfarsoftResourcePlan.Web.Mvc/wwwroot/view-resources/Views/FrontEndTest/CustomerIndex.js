@@ -1,8 +1,8 @@
 ﻿(function () {
     $(function () {
         var _unionInfoService = abp.services.app.unionInfo;
-        var _$Modal = $('#addCustomerModal');
-        var _$form = $('form[name=createCustomerForm]');
+        var _$Modal = $tabs('.addCustomerModal');
+        var _$form = $tabs('form[name=createCustomerForm]');
 
         _$form.closest('div.modal-content').find(".btn-primary").click(function (e) {
             e.preventDefault();
@@ -12,10 +12,10 @@
         Adaptation();
         dateSelect();
 
-        var activeId = $("#tab-content-tabitem > .active").attr("id");
+        //var activeId = $("#tab-content-tabitem > .active").attr("id");
 
         //$("#" + activeId + " .querySearch").click(function () {
-         $ele(".querySearch").click(function () {
+         $tabs(".querySearch").click(function () {
             var Search = $(this).parent().serializeObject();
 
             DG.setQueryParamsRequest("#CustomerTableList", Search)
@@ -25,10 +25,10 @@
             Adaptation();
         });
 
-        $ele("#addCustomerBtn").click(function () {
+        $tabs(".addCustomerBtn").click(function () {
         //$("#addCustomerBtn").click(function () {
             _$form.form('clear');
-            $('#addCustomerModal').modal({
+            $tabs('.addCustomerModal').modal({
                 backdrop: "static"
             })
             //_unionInfoService.getMaxUnionInfoCode().done(function (data) {
@@ -42,7 +42,7 @@
 
             TabsChange("addCustomerModal", 1, false);
 
-            $("#addCustomerModal input[name=isSupplierAndCustomer]").change(function (e) {
+            $tabs(".addCustomerModal input[name=isSupplierAndCustomer]").change(function (e) {
                 if ($(this).is(':checked')) {
                     TabsChange("addCustomerModal", 1, true);
                 } else {
@@ -108,8 +108,8 @@
         function EditCustomerInfo(value, rowData, rowIndex) {
             BindingCustomerInfo(rowData.unionInfoId);
 
-            $("#addCustomerModal").modal("show");
-            $("#addCustomerModal input[name=isSupplierAndCustomer]").change(function (e) {
+            $tabs(".addCustomerModal").modal("show");
+            $tabs(".addCustomerModal input[name=isSupplierAndCustomer]").change(function (e) {
                 if ($(this).is(':checked')) {
                     TabsChange("addCustomerModal", 1, true);
                 } else {
@@ -120,14 +120,14 @@
         }
         function CustomerInfoInfoDetail(value, rowData, rowIndex) {
             BindingCustomerInfo(rowData.unionInfoId);
-            $("#addCustomerModal").modal("show");
+            $tabs(".addCustomerModal").modal("show");
             TabsChange("addCustomerModal");
             _$form.closest('div.modal-content').find(".btn-primary").addClass('hide');
         }
         function BindingCustomerInfo(Id) {
             _unionInfoService.getUnionInfoForEdit(Id).done(function (data) {
-                $('form[name=createCustomerForm]').form('load', data.data);
-                if ($("#addCustomerModal input[name=isSupplierAndCustomer]").is(':checked')) {
+                $tabs('form[name=createCustomerForm]').form('load', data.data);
+                if ($tabs(".addCustomerModal input[name=isSupplierAndCustomer]").is(':checked')) {
                     TabsChange("addCustomerModal", 1, true);
                 } else {
                     TabsChange("addCustomerModal", 1, false);

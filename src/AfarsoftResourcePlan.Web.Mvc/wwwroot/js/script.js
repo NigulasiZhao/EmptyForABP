@@ -8,7 +8,7 @@
     //    return jq("#" + activeId + " " + params)
     //}
 
-    var $ele = function (params) {
+    var $tabs = function (params) {
         //var jq = jQuery.noConflict();
         var activeId = $("#tab-content-tabitem > .active").attr("id");
         return $("#" + activeId + " " + params)
