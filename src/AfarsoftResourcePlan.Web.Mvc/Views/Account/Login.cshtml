@@ -3,7 +3,7 @@
 @using Abp.MultiTenancy
 @model AfarsoftResourcePlan.Web.Models.Account.LoginFormViewModel
 @section Styles
-{
+    {
     <environment names="Development">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
     </environment>
@@ -11,10 +11,17 @@
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
     </environment>
-
+    <style>
+        [type="checkbox"]:not(:checked),
+        [type="checkbox"]:checked {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+    </style>
 }
 @section Scripts
-{
+    {
     <environment names="Development">
         <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
     </environment>
