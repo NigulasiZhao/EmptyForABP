@@ -168,6 +168,18 @@
     <text name="nav_app_packsearch">打包查询</text>
     <text name="nav_app_packmanagement">打包管理</text>
 
+
+    <text name="nav_test">资料</text>
+    <text name="nav_test_1">查询类</text>
+    <text name="nav_test_2">跟踪类</text>
+    <text name="nav_test_3">报表类</text>
+    <text name="nav_test_4">带选项卡的编辑页</text>
+    <text name="nav_test_5">资料（弹窗带选项卡）</text>
+    <text name="nav_test_6">资料（弹窗不带选项卡）</text>
+    <text name="nav_test_7">商品（左树右表格）</text>
+    <text name="nav_test_8">制单页</text>
+    <text name="nav_test_9">设置页</text>
+    <text name="nav_test_10">权限页</text>
   </texts>
 </localizationDictionary>
 

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AfarsoftResourcePlan.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AfarsoftResourcePlan.Web.Mvc.Controllers
 {
-    public class TestController : Controller
+    public class TestController : AfarsoftResourcePlanControllerBase
     {
         /// <summary>
         /// 查询类
