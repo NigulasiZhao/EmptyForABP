@@ -61,6 +61,7 @@ var closableTab = {
         $("li[id^=tab_seed_]").removeClass("active");
         $("div[id^=tab_container_]").removeClass("active");
         $("#" + id).data("param", tabItem.data);
+        $("#" + container).data("pageData", tabItem);
         $("#" + id).addClass("active");
         $("#" + container).addClass("active");
     },
