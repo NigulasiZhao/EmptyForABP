@@ -2,8 +2,10 @@
 <items>
   <menu name="base" displayName="nav_test" icon="iconziliao" url="" requiredPermissionName="Permission_base">
     <subTitle>
-      <menu name="base_ErpBasicInfo" displayName="nav_test_1" icon="" url="/test/Query" requiredPermissionName="Permission_ErpBasicInfo">
+      <menu name="base_ErpBasicInfo" displayName="nav_test_0" icon="" url="" requiredPermissionName="Permission_ErpBasicInfo">
         <subItems>
+          <menu name="base_Erp_Customer1" displayName="nav_test_1" icon="" url="/test/Query" requiredPermissionName="Permission_Erp_Customer">
+          </menu>
           <menu name="base_Erp_Customer" displayName="nav_test_2" icon="" url="/test/Track" requiredPermissionName="Permission_Erp_Customer">
           </menu>
           <menu name="base_Erp_Organization" displayName="nav_test_3" icon="" url="/test/Report" requiredPermissionName="Permission_Erp_Organization">
