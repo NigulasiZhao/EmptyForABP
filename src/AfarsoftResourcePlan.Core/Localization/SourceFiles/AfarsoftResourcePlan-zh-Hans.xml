@@ -170,6 +170,7 @@
 
 
     <text name="nav_test">资料</text>
+    <text name="nav_test_0">示例</text>
     <text name="nav_test_1">查询类</text>
     <text name="nav_test_2">跟踪类</text>
     <text name="nav_test_3">报表类</text>
