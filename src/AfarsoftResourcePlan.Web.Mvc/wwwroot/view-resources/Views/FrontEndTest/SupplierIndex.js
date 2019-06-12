@@ -2,11 +2,11 @@
     $(function () {
         var _saleOrderService = abp.services.app.saleOrder;
         var _serialNumberService = abp.services.app.serialNumber;
-        var _$form = $tabs('form[name=newSaleOrderFormList]');
+        var _$form = $tabs('form[name=form1]');
         var editRow = 0;
         var AddProcessFlag = false;
-        Adaptation();
-        dateSelect();
+        var tableId = "#NewSaleOrderList";
+
         //_serialNumberService.getOrderCode({ orderType: 5, organizationId: $("[name='organizationId']").val() }).done(function (data) {
         //    $tabs('#NewSaleOrderCode').text(data);
         //    $('#NewSaleOrderCode').text(data);
@@ -51,9 +51,9 @@
             saleOrderModel.orderDate = new Date(FormInfo.orderDate);
             saleOrderModel.orderDeliveryDate = new Date(FormInfo.orderDeliveryDate);
 
-            $('#NewSaleOrderList').datagrid('endEdit', editRow);
+            $tabs(tableId).datagrid('endEdit', editRow);
             var ConRows = [];
-            var Rows = $('#NewSaleOrderList').datagrid('getRows');
+            var Rows = $tabs(tableId).datagrid('getRows');
             for (var i = 0; i < Rows.length; i++) {
                 if (typeof Rows[i].id != "undefined") {
                     if (Rows[i].goodsQuantity != "" || Rows[i].giveQuantity != "") {
@@ -99,23 +99,19 @@
         })
         $tabs(".customer-search").click(function () {
             var Search = $(this).parent().serializeObject();
-            DG.setQueryParamsRequest("#customerForSaleList", Search)
+            DG.setQueryParamsRequest($tabs("#customerForSaleList"), Search)
         })
 
         $tabs(".selectCustomer").each(function () {
             $(this).textbox($.extend({}, __customerOption, {
                 OnSelectedCustomer: function (data) {
-                    $tabs('form[name=newSaleOrderFormList]').form('load', { payWay: data.payWay, accountDate: data.accountDate });
+                    $tabs('form[name=form1]').form('load', { payWay: data.payWay, accountDate: data.accountDate });
                 }
             }));
         });
 
-
-        $(window).resize(function () {          //当浏览器大小变化时
-            Adaptation();
-        });
-        $("#NewSaleOrderList").datagrid("keyCtr");
-        $('#NewSaleOrderList').datagrid
+        $tabs(tableId).datagrid("keyCtr");
+        $tabs(tableId).datagrid
             ({
                 fitColumns: true,
                 width: '100%',
@@ -129,18 +125,18 @@
                 onClickCell: function (index, field) {
                     DG.onClickCell(index, field, this);
                     editRow = index;
-                    $('#NewSaleOrderList').datagrid('beginEdit', index);
+                    $tabs(tableId).datagrid('beginEdit', index);
                     DG.selectClickCell(field);
                 },
                 rowStyler: function (index, row) { },
                 onLoadSuccess: function (data) {
-                    tableShow("#NewSaleOrderList");
-                    DG.countColumns("#NewSaleOrderList", "goodsQuantity", "goodsAmount", "amountNoTaxRate");
+                    tableShow(tableId);
+                    DG.countColumns(tableId, "goodsQuantity", "goodsAmount", "amountNoTaxRate");
                 },
                 onBeginEdit: function (index, row) { },
                 onAfterEdit: function (index, row, changes) {
-                    DG.calculationAmount("#NewSaleOrderList", index, row, changes);
-                    var num = DG.bottomAmount("#NewSaleOrderList", "goodsAmount");
+                    DG.calculationAmount(tableId, index, row, changes);
+                    var num = DG.bottomAmount(tableId, "goodsAmount");
                     $("#" + activeId + " .spanAmount").text(num);
                     //if (changes.goodsQuantity == '' || row.id == undefined) {
                     //    return;
@@ -186,7 +182,7 @@
                                     return { unionId: $("#" + activeId + " [name='customerId']").val(), warehousesId: $("#" + activeId+" [name='warehouseId']").val(), GoodsPriceType: 2 };
                                 },
                                 OnSelectedGoods: function (goods) {
-                                    DG.goodsRowsWindow("NewSaleOrderList", goods, false);
+                                    DG.goodsRowsWindow(tableId, goods, false);
                                 }
                             }
                         }
@@ -284,12 +280,12 @@
                         }
                     },
                 ]],
-                toolbar: intToolbar("NewSaleOrderList", "add", "insert", "del", "search")
+                toolbar: intToolbar(tableId, "add", "insert", "del", "search")
             });
         for (var i = 0; i < 10; i++) {
             //添加空行
-            DG.insertRow($('#NewSaleOrderList'));
+            DG.insertRow($tabs(tableId));
         }
-        $("#NewSaleOrderList").datagrid('selectRow', 0);
+        $tabs(tableId).datagrid('selectRow', 0);
     });
 })();

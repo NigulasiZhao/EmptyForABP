@@ -1,7 +1,5 @@
 ﻿(function () {
     $(function () {
-        Adaptation();
-        dateSelect();
-        TabsChange("");
+        TabsChange();
     })
 })()

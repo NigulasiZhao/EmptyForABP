@@ -134,7 +134,6 @@ function Adaptation() {
     if ($("#" + activeId + " .flexTable").length) {
         tableHeights = tableHeights - $("#" + activeId + " .flexTable").height();
     }
-
     $("#" + activeId + " .TableAdaptation").css("height", tableHeights);
 
 
@@ -182,22 +181,22 @@ function intToolbar(tableId) {
     var argArr = Array.prototype.slice.call(arguments, 1);
     var toolbarAdd = {
         text: '添加', iconCls: 'iconfont icontianjia', handler: function () {
-            DG.insertRow('#' + tableId);
+            DG.insertRow(tableId);
         }
     };
     var toolbarInsert = {
         text: '插入', iconCls: 'iconfont iconcharu', handler: function () {
-            DG.insertInSeleRow('#' + tableId);
+            DG.insertInSeleRow(tableId);
         }
     };
     var toolbarDel = {
         text: '删除', iconCls: 'iconfont iconshanchu', handler: function () {
 
-            DG.DeleteRow('#' + tableId);
+            DG.DeleteRow(tableId);
         }
     };
     var toolbarSearch = {
-        id: 'dgSearchHref', text: '<div class="dgSearch"><input id="iptSearch" onchange="DG.watchSearchInput(this)" type="text" autocomplete="off" placeholder="请输入关键字"><i class="iconfont iconsousuo" onclick="DG.searchPosition(\'#' + tableId + '\')"></i></div>'
+        id: 'dgSearchHref', text: '<div class="dgSearch"><input id="iptSearch" onchange="DG.watchSearchInput(this)" type="text" autocomplete="off" placeholder="请输入关键字"><i class="iconfont iconsousuo" onclick="DG.searchPosition(\'' + tableId + '\')"></i></div>'
     };
     argArr.forEach(function (item) {
         if (item == "add") {
@@ -315,7 +314,7 @@ function InitDatePicker(dPObj, index, fun, isCallBack) {
     })
 }
 function dateSelect() {
-    $('.searchli-group li').click(function () {
+    $('.content_nav').delegate('.searchli-group li', "click", function () {
         var activeId = $("#tab-content-tabitem > .active").attr("id");
         $(this).addClass("addbackground").siblings().removeClass("addbackground");
         var di = $(this).attr("data-index");
@@ -387,7 +386,7 @@ function dateSelect() {
                 $('#StartDate').datebox('setValue', '2017-04-01');
         }
     });
-    $('.containerNode').click(function () {
+    $('.content_nav').delegate(".containerNode", "click", function () {
         var activeId = $("#tab-content-tabitem > .active").attr("id");
         if ($(this).attr('data-id') == 1) {
             $('.zhankai').show();
@@ -465,13 +464,14 @@ function subindexMenu() {
 
     $(function () {
         subindexMenu();
+        dateSelect();
         activateNotificationAndTasksScroll();
-
         setSkinListHeightAndScroll();
         setSettingListHeightAndScroll();
         $(window).resize(function () {
             setSkinListHeightAndScroll();
             setSettingListHeightAndScroll();
+            Adaptation();
         });
 
     });
