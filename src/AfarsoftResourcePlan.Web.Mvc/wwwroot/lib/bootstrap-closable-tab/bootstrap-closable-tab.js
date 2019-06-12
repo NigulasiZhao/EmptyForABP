@@ -43,6 +43,7 @@ var closableTab = {
                     });
                 } else {
                     initMyComponent();
+                    Adaptation();
                 }
 
             })
@@ -52,6 +53,7 @@ var closableTab = {
                     $("#navContent-loading").css("display", "none");
 
                     initMyComponent();
+                    Adaptation();
                 })
             }
             $("#navContent-loading").css("display", "none");

@@ -348,7 +348,7 @@ var DG = {
         var Location = -1;
         var pos = 0;
         
-        var targetGrid = $("#" + targetGrid);
+        var targetGrid = $(targetGrid);
         var goodsRowsData = row;
         //if (row) {
         //    goodsRowsData.push(row);
@@ -496,12 +496,12 @@ var DG = {
     },
     //Datagrid参数
     setQueryParamsRequest: function (table, formObj) {
-        var queryParams = $(table).datagrid('options').queryParams;
-        var sortName = $(table).datagrid('options').sortName;
-        var sortOrder = $(table).datagrid('options').sortOrder;
+        var queryParams = table.datagrid('options').queryParams;
+        var sortName = table.datagrid('options').sortName;
+        var sortOrder = table.datagrid('options').sortOrder;
         queryParams = $.extend({}, queryParams, formObj);
-        $(table).datagrid('options').queryParams = queryParams;
-        $(table).datagrid("reload");
+        table.datagrid('options').queryParams = queryParams;
+        table.datagrid("reload");
     },
     //treegrid参数
     setTreeGridQueryParamsRequest: function (table, formObj) {
@@ -631,6 +631,7 @@ function endEditing(dataGridObj) {
     if (editRow == undefined) { return true }
     if ($(dataGridObj).datagrid('validateRow', editRow)) {
         $(dataGridObj).datagrid('endEdit', editRow);
+        $(dataGridObj).datagrid('selectRow', editRow);
         editRow = undefined;
         return true;
     } else {

@@ -2,31 +2,22 @@
     $(function () {
         var _unionInfoService = abp.services.app.unionInfo;
         var _$Modal = $tabs('.addCustomerModal');
-        var _$form = $tabs('form[name=createCustomerForm]');
+        var _$form = $tabs('form[name=form1]');
+        var tableId = "#CustomerTableList";
 
         _$form.closest('div.modal-content').find(".btn-primary").click(function (e) {
             e.preventDefault();
             CustomerSave();
         });
 
-        Adaptation();
-        dateSelect();
 
-        //var activeId = $("#tab-content-tabitem > .active").attr("id");
-
-        //$("#" + activeId + " .querySearch").click(function () {
          $tabs(".querySearch").click(function () {
             var Search = $(this).parent().serializeObject();
 
-            DG.setQueryParamsRequest("#CustomerTableList", Search)
+             DG.setQueryParamsRequest($tabs(tableId), Search)
         })
 
-        $(window).resize(function () {          //当浏览器大小变化时
-            Adaptation();
-        });
-
         $tabs(".addCustomerBtn").click(function () {
-        //$("#addCustomerBtn").click(function () {
             _$form.form('clear');
             $tabs('.addCustomerModal').modal({
                 backdrop: "static"
@@ -51,7 +42,7 @@
             });
         })
 
-        $('#CustomerTableList').datagrid
+        $tabs(tableId).datagrid
             ({
                 fitColumns: true,
                 width: '100%',
@@ -68,13 +59,13 @@
                 onClickCell: function (index, field) {
                     DG.onClickCell(index, field, this);
                     editRow = index;
-                    $('#CustomerTableList').datagrid('beginEdit', index);
+                    $tabs(tableId).datagrid('beginEdit', index);
                     DG.selectClickCell(field);
                 },
                 rowStyler: function (index, row) { },
                 onLoadSuccess: function (data) {
-                    $("#CustomerTableList").datagrid("keyCtr");
-                    tableShow("#CustomerTableList");
+                    $tabs(tableId).datagrid("keyCtr");
+                    tableShow(tableId);
                 },
                 onBeginEdit: function (index, row) { },
                 onAfterEdit: function (index, row, changes) { },
@@ -126,7 +117,7 @@
         }
         function BindingCustomerInfo(Id) {
             _unionInfoService.getUnionInfoForEdit(Id).done(function (data) {
-                $tabs('form[name=createCustomerForm]').form('load', data.data);
+                $tabs('form[name=form1]').form('load', data.data);
                 if ($tabs(".addCustomerModal input[name=isSupplierAndCustomer]").is(':checked')) {
                     TabsChange("addCustomerModal", 1, true);
                 } else {
@@ -250,7 +241,7 @@
                     abp.message.success("操作成功", '提示');
                     abp.ui.clearBusy(_$form);
                     _$Modal.modal('hide');
-                    $("#CustomerTableList").datagrid("reload");
+                    $tabs(tableId).datagrid("reload");
                 }).always(function () {
                     abp.ui.clearBusy(_$Modal);
                 }).fail(function (data) {
@@ -264,7 +255,7 @@
                     abp.message.success("操作成功", '提示');
                     abp.ui.clearBusy(_$form);
                     _$Modal.modal('hide');
-                    $("#CustomerTableList").datagrid("reload");
+                    $tabs(tableId).datagrid("reload");
                 }).always(function () {
                     abp.ui.clearBusy(_$Modal);
                 }).fail(function (data) {
