@@ -45,25 +45,18 @@
 
         $tabs(tableId).datagrid
             ({
-                fitColumns: true,
-                width: '100%',
-                fit: true,
-                showFooter: true,
-                //是否显示斑马线效果;同一行中显示数据;显示一个行号列;只允许选择一行
-                striped: false, nowrap: true, rownumbers: true, singleSelect: true,
                 queryParams: {
                     FilterUserState: 0
                 },
-                url: "/api/services/app/UnionInfo/GetPagedCustomerInfo",
+                url: "/FrontEndTest/GetIndex",
                 //分页相关属性
-                pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1, sortName: 'CustomerCode', sortOrder: 'asc',
+                sortName: 'CustomerCode', sortOrder: 'asc',
                 onClickCell: function (index, field) {
                     DG.onClickCell(index, field, this);
                     editRow = index;
                     $tabs(tableId).datagrid('beginEdit', index);
                     DG.selectClickCell(field);
                 },
-                rowStyler: function (index, row) { },
                 onLoadSuccess: function (data) {
                     $tabs(tableId).datagrid("keyCtr");
                     tableShow(tableId);

@@ -40,22 +40,15 @@
         $tabs(tableId).datagrid("keyCtr");
         $tabs(tableId).datagrid
             ({
-                fitColumns: true,
-                width: '100%',
-                fit: true,
-                showFooter: true,
-                //是否显示斑马线效果;同一行中显示数据;显示一个行号列;只允许选择一行
-                striped: false, nowrap: true, rownumbers: true, singleSelect: true,
                 url: "",
                 //分页相关属性
-                pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1, sortName: 'GoodsCode', sortOrder: 'asc',
+                sortName: 'GoodsCode', sortOrder: 'asc',
                 onClickCell: function (index, field) {
                     DG.onClickCell(index, field, this);
                     editRow = index;
                     $tabs(tableId).datagrid('beginEdit', index);
                     DG.selectClickCell(field);
                 },
-                rowStyler: function (index, row) { },
                 onLoadSuccess: function (data) {
                     tableShow(tableId);
                     DG.countColumns(tableId, "goodsQuantity", "goodsAmount", "amountNoTaxRate");
@@ -215,12 +208,11 @@
         }
         $tabs(tableId).datagrid('selectRow', 0);
         function saveFn(IsRefresh) {
-            debugger
-            if (IsRefresh) {
-                var activeId = $("#tab-content-tabitem > .active").attr("id");
-                var pageData = $("#" + activeId).data("pageData");
-                closableTab.addTab(pageData, IsRefresh);
-            }
+            //if (IsRefresh) {
+            //    var activeId = $("#tab-content-tabitem > .active").attr("id");
+            //    var pageData = $("#" + activeId).data("pageData");
+            //    closableTab.addTab(pageData, IsRefresh);
+            //}
             if (AddProcessFlag) {
                 abp.message.error("单据已提交", '提示');
                 return;

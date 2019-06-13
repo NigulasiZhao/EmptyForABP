@@ -146,10 +146,18 @@ $.fn.serializeObject = function () {
     return o;
 };
 $.extend($.fn.combobox.defaults, {
-    editable: false
+    editable: false,
+    value: 0
 });
 
 $.extend($.fn.datagrid.defaults, {
+    fitColumns: true,
+    width: '100%',
+    fit: true,
+    showFooter: true,
+    //是否显示斑马线效果;同一行中显示数据;显示一个行号列;只允许选择一行
+    striped: false, nowrap: true, rownumbers: true, singleSelect: true,
+    pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1,
     loadFilter: function (data) {
         if (data.result != undefined) {
             if (data.result.total == undefined && data.result.totalCount != undefined) {

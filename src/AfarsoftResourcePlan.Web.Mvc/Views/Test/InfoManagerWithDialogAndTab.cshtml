@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade tabsChangeModal addCustomerModal1" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel">
+<div class="modal fade tabsChangeModal addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -103,14 +103,14 @@
                             </div>
                             <div class="publicIpts">
                                 <label>结账方式<span style="color:red">*</span></label>
-                                <select class="easyui-combobox" data-options="editable:false,value:0" panelheight="auto" name="supplierPayWay" required="required">
+                                <select class="easyui-combobox" panelheight="auto" name="supplierPayWay" required="required">
                                     <option value="0">月结</option>
                                     <option value="1">到付</option>
                                 </select>
                             </div>
                             <div class="publicIpts pull-right">
                                 <label>供应商状态<span style="color:red">*</span></label>
-                                <select class="easyui-combobox" data-options="editable:false,value:0" panelheight="auto" name="supplierUseStateType" required="required">
+                                <select class="easyui-combobox" panelheight="auto" name="supplierUseStateType" required="required">
                                     <option value="0">正常</option>
                                     <option value="1">停用</option>
                                 </select>
@@ -132,7 +132,7 @@
                         <div>
                             <div class="publicIpts fullWidth">
                                 <label>客户级别<span style="color:red">*</span></label>
-                                <select class="easyui-combobox" data-options="editable:false,value:1" panelheight="auto" name="customerLevel" required="required">
+                                <select class="easyui-combobox" data-options="value:1" panelheight="auto" name="customerLevel" required="required">
                                     <option value="0">无</option>
                                     <option value="1">一级价</option>
                                     <option value="2">二级价</option>
@@ -171,7 +171,7 @@
                             </div>
                             <div class="publicIpts fullWidth">
                                 <label>客户状态<span style="color:red">*</span></label>
-                                <select class="easyui-combobox" data-options="editable:false,value:0" panelheight="auto" name="customerUseStateType" required="required">
+                                <select class="easyui-combobox" panelheight="auto" name="customerUseStateType" required="required">
                                     <option value="0">正常</option>
                                     <option value="1">停用</option>
                                 </select>
@@ -199,7 +199,7 @@
                                 <input type="checkbox" name="isSupplierAndCustomer" value="1"> 即使供应商又是客户
                             </label>
                         <label>既是供应商又是客户</label>
-                        <select class="easyui-combobox" data-options="editable:false,value:0" panelheight="auto" name="isSupplierAndCustomer">
+                        <select class="easyui-combobox" panelheight="auto" name="isSupplierAndCustomer">
                             <option value="0">是</option>
                             <option value="1">否</option>
                         </select>
@@ -209,7 +209,7 @@
                                 <input type="checkbox" name="nature" value="1">加盟商户
                             </label>
                         <label>加盟商户</label>
-                        <select class="easyui-combobox" data-options="editable:false,value:0" panelheight="auto" name="nature">
+                        <select class="easyui-combobox" panelheight="auto" name="nature">
                             <option value="0">是</option>
                             <option value="1">否</option>
                         </select>
