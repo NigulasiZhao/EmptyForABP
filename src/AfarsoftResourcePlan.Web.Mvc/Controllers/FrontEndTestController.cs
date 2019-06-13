@@ -45,15 +45,15 @@ namespace AfarsoftResourcePlan.Web.Mvc.Controllers
         [DontWrapResult]
         public ActionResult GetIndex()
         {
-            var data = new List<object>(){new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
-                new { goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+            var data = new List<object>(){new { id=0,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=1,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=2,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=3,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=4,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=5,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=6,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=7,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
+                new { id=8,goodsName="Arbet",goodsCode=1, classification="男",goodsArticleNumber = 0,goodsSpecification="20g/袋",goodsUnit="袋",auxiliaryUnit= "斤",goodsPrice=10},
             };
             //var total = data.Count;
             //var footer = new List<object>(){
