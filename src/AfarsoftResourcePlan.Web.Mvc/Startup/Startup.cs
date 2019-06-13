@@ -13,7 +13,7 @@ using AfarsoftResourcePlan.Configuration;
 using AfarsoftResourcePlan.Identity;
 using AfarsoftResourcePlan.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
-
+using AfarsoftResourcePlan.Json;
 
 namespace AfarsoftResourcePlan.Web.Startup
 {
@@ -32,7 +32,10 @@ namespace AfarsoftResourcePlan.Web.Startup
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
             );
-
+            services.PostConfigure<MvcJsonOptions>(options =>
+            {
+                options.SerializerSettings.ContractResolver = new AfarsoftResourcePlanContractResolver();
+            });
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 

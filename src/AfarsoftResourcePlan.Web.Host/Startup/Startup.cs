@@ -16,6 +16,8 @@ using AfarsoftResourcePlan.Configuration;
 using AfarsoftResourcePlan.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using Microsoft.AspNetCore.Mvc;
+using AfarsoftResourcePlan.Json;
 
 namespace AfarsoftResourcePlan.Web.Host.Startup
 {
@@ -36,7 +38,10 @@ namespace AfarsoftResourcePlan.Web.Host.Startup
             services.AddMvc(
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
             );
-
+            services.PostConfigure<MvcJsonOptions>(options =>
+            {
+                options.SerializerSettings.ContractResolver = new AfarsoftResourcePlanContractResolver();
+            });
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
