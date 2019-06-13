@@ -149,7 +149,9 @@ $.extend($.fn.combobox.defaults, {
     editable: false,
     value: 0
 });
-
+$.extend($.fn.datebox.defaults, {
+    editable: false
+});
 $.extend($.fn.datagrid.defaults, {
     fitColumns: true,
     width: '100%',
@@ -157,25 +159,7 @@ $.extend($.fn.datagrid.defaults, {
     showFooter: true,
     //是否显示斑马线效果;同一行中显示数据;显示一个行号列;只允许选择一行
     striped: false, nowrap: true, rownumbers: true, singleSelect: true,
-    pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1,
-    loadFilter: function (data) {
-        if (data.result != undefined) {
-            if (data.result.total == undefined && data.result.totalCount != undefined) {
-                data.result.total = data.result.totalCount;
-            }
-            if (data.result.rows == undefined && data.result.items != undefined) {
-                data.result.rows = data.result.items;
-            }
-            if (data.result.footer) {
-                var arr = [{}];
-                arr.push(data.result.footer);
-                data.result.footer = arr;
-            }
-            return data.result;
-        }
-        return data;
-    },
-    method: "get"
+    pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1
 });
 $.extend($.fn.treegrid.defaults, {
     loadFilter: function (data) {
