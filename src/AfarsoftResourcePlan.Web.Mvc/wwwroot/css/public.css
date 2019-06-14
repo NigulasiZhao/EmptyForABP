@@ -835,3 +835,13 @@ dl {
 .datagrid-header .datagrid-header-row td div {
     text-align: center !important;
 }
+
+.eaditableBackground {
+    background: #e1effd;
+}
+.eaditableBackground input, .eaditableBackground span {
+    background: #e1effd;
+}
+.eaditableBackground .textbox-focused {
+    border: 1px solid #bbbbbb!important;
+}

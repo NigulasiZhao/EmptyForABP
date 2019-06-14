@@ -54,6 +54,11 @@
                     DG.countColumns(tableId, "goodsQuantity", "goodsAmount", "amountNoTaxRate");
                 },
                 onBeginEdit: function (index, row) { },
+                rowStyler: function (index, row) {
+                    if (!row.goodsQuantity) {
+                        return 'color:red';
+                    }
+                },
                 onAfterEdit: function (index, row, changes) {
                     DG.calculationAmount(tableId, index, row, changes);
                     var num = DG.bottomAmount(tableId, "goodsAmount");
@@ -105,6 +110,8 @@
                                     DG.goodsRowsWindow(tableId, goods, false);
                                 }
                             }
+                        }, styler:function(value, row, index) {
+                            return {class:'eaditableBackground'}
                         }
                     },
                     {
@@ -133,6 +140,8 @@
                                 precision: 0,
                                 min: 0
                             },
+                        }, styler: function (value, row, index) {
+                            return { class: 'eaditableBackground' }
                         }
                     },
                     {
@@ -143,6 +152,8 @@
                                 precision: 3,
                                 min: 0
                             },
+                        }, styler: function (value, row, index) {
+                            return { class: 'eaditableBackground' }
                         }
                     },
                     {
@@ -153,6 +164,8 @@
                                 precision: 3,
                                 min: 0
                             },
+                        }, styler: function (value, row, index) {
+                            return { class: 'eaditableBackground' }
                         }
                     },
                     {
@@ -163,6 +176,8 @@
                                 precision: 3,
                                 min: 0
                             },
+                        }, styler: function (value, row, index) {
+                            return { class: 'eaditableBackground' }
                         }
                     },
                     {
@@ -176,6 +191,8 @@
                                 precision: 3,
                                 min: 0
                             },
+                        }, styler: function (value, row, index) {
+                            return { class: 'eaditableBackground' }
                         }
                     },
                     {
@@ -197,6 +214,8 @@
                             options: {
                                 align: 'left',
                             },
+                        }, styler: function (value, row, index) {
+                            return { class: 'eaditableBackground' }
                         }
                     },
                 ]],
