@@ -12,6 +12,7 @@ using AfarsoftResourcePlan.Localization;
 using AfarsoftResourcePlan.MultiTenancy;
 using AfarsoftResourcePlan.Timing;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace AfarsoftResourcePlan
 {
@@ -22,10 +23,15 @@ namespace AfarsoftResourcePlan
 
         public AfarsoftResourcePlanCoreModule()
         {
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             //_env = env;
             //_appConfiguration = AppConfigurations.Get(env.ContentRootPath, env.EnvironmentName, env.IsDevelopment());
             var builder = new ConfigurationBuilder()
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            if (!string.IsNullOrEmpty(environmentName))
+            {
+                builder.AddJsonFile($"appsettings.{environmentName}.json", true, true);
+            }
             _appConfiguration = builder.Build();
         }
         public override void PreInitialize()
