@@ -10,6 +10,9 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <RootNamespace>AfarsoftResourcePlan</RootNamespace>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\code\git\abprigger\src\AfarsoftResourcePlan.Application\AfarsoftResourcePlan.Application.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\AfarsoftResourcePlan.Core\AfarsoftResourcePlan.Core.csproj" />
   </ItemGroup>
@@ -18,5 +21,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Startup\Navigation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="AfarsoftResourcePlan.Application.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
