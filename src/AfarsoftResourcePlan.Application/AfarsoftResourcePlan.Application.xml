@@ -1,0 +1,3927 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AfarsoftResourcePlan.Application</name>
+    </assembly>
+    <members>
+        <member name="T:AfarsoftResourcePlan.AfarsoftResourcePlanAppServiceBase">
+            <summary>
+            Derive your application services from this class.
+            </summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.AppConsts.DefaultPassPhrase">
+            <summary>
+            Default pass phrase for SimpleStringCipher decrypt/encrypt operations
+            </summary>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Common.BaseOutput">
+            <summary>
+            添加、删除、修改返回基类
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BaseOutput.Code">
+            <summary>
+            返回码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BaseOutput.Message">
+            <summary>
+            返回码备注
+            </summary>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Common.BaseDataOutput`1">
+            <summary>
+            返回单独实体基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BaseDataOutput`1.Data">
+            <summary>
+            返回的业务实体列表
+            </summary>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Common.BaseListDataOutput`1">
+            <summary>
+            返回列表实体基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BaseListDataOutput`1.Data">
+            <summary>
+            返回的业务实体列表
+            </summary>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Common.BasePageDataOutput`1">
+            <summary>
+            返回分页列表基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageDataOutput`1.Rows">
+            <summary>
+            分页的业务实体列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageDataOutput`1.footer">
+            <summary>
+            合计字段
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageDataOutput`1.Total">
+            <summary>
+            总数据条数
+            </summary>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Common.BasePageInput">
+            <summary>
+            分页请求的基类，接收分页请求
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.StartDate">
+            <summary>
+            开始日期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.EndDate">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.page">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.rows">
+            <summary>
+            读取行数
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.MaxResultCount">
+            <summary>
+            忽略此参数
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.SkipCount">
+            <summary>
+            忽略此参数
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.sort">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Common.BasePageInput.order">
+            <summary>
+            排序方式(asc:升序;desc:降序 )
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.BasePageInput.Normalize">
+            <summary>
+            默认排序
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Common.SetCreaterAndLastModifierForInsert(AfarsoftResourcePlan.BaseEntity.AfarEntity{System.Guid},Abp.Domain.Repositories.IRepository{AfarsoftResourcePlan.Erp.BaseInfoEntity.UserInfo,System.Guid})">
+            <summary>
+            添加时把添加人信息、修改人信息以及是否删除抽离出来
+            适用于继承AfarEntity的实体使用
+            </summary>
+            <param name="obj">继承AfarEntity的实体对象</param>
+            <returns>返回BaseOutput对象，code为0则正常，code不为0则有异常；message可以在调用的地方具体赋值</returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Common.SetLastModifierForUpdate(AfarsoftResourcePlan.BaseEntity.AfarEntity{System.Guid},Abp.Domain.Repositories.IRepository{AfarsoftResourcePlan.Erp.BaseInfoEntity.UserInfo,System.Guid})">
+            <summary>
+            修改时把修改人信息抽离出来
+            适用于继承AfarEntity的实体使用
+            </summary>
+            <param name="obj">继承AfarEntity的实体对象</param>
+            <returns>返回BaseOutput对象，code为0则正常，code不为0则有异常，message可以在调用的地方具体赋值</returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Common.SetLastModifierForUpdate(AfarsoftResourcePlan.BaseEntity.AfarEntity{System.Int32},Abp.Domain.Repositories.IRepository{AfarsoftResourcePlan.Erp.BaseInfoEntity.UserInfo,System.Guid})">
+            <summary>
+            修改时把修改人信息抽离出来
+            适用于继承AfarEntity的实体使用
+            </summary>
+            <param name="obj">继承AfarEntity的实体对象</param>
+            <returns>返回BaseOutput对象，code为0则正常，code不为0则有异常，message可以在调用的地方具体赋值</returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Geohash.CalculateAdjacent(System.String,AfarsoftResourcePlan.Common.Geohash.Direction)">
+            <summary>
+            计算相邻
+            </summary>
+            <param name="hash"></param>
+            <param name="direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Geohash.RefineInterval(System.Double[]@,System.Int32,System.Int32)">
+            <summary>
+            细化间隔
+            </summary>
+            <param name="interval"></param>
+            <param name="cd"></param>
+            <param name="mask"></param>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Geohash.Decode(System.String)">
+            <summary>
+            解码
+            </summary>
+            <param name="geohash">geohash</param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Geohash.Encode(System.Double,System.Double,System.Int32)">
+            <summary>
+            编码
+            </summary>
+            <param name="longitude">经度</param>
+            <param name="latitude">纬度</param>
+            <param name="precision">精度</param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Geohash.getGeoHashExpand(System.String,System.Int32)">
+            <summary>
+            获取九个格子 顺序 本身 上、下、左、右、 左上、 右上、 左下、右下
+            </summary>
+            <param name="geohash"></param>
+            <param name="accuracy">精度
+            5 五公里左右
+            6 一公里左右
+            7 两百米左右
+            8 五十米左右
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Common.Distance.GetDistance(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            获取距离，单位为米
+            </summary>
+            <param name="longitude1">经度1</param>
+            <param name="latitude1">纬度1</param>
+            <param name="longitude2">经度2</param>
+            <param name="latitude2">纬度2</param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.BankAccountAppService.GetAllBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountInput)">
+            <summary>
+            获取所有银行账户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.BankAccountAppService.InsertBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput)">
+            <summary>
+            新增银行账户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.BankAccountAppService.UpdateBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput)">
+            <summary>
+            修改银行账户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.BankAccountAppService.DeleteBankAccount(System.Guid)">
+            <summary>
+            删除银行账户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.BankAccountPaymentMethodInput.EnterpriseId">
+            <summary>
+            企业Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.BankAccountPaymentMethodInput.BankAccountId">
+            <summary>
+            银行账户Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.BankAccountPaymentMethodInput.PaymentMethodId">
+            <summary>
+            付款方式Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountInput.BankAccountCodeOrName">
+            <summary>
+            银行账户编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.BankName">
+            <summary>
+            银行名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.Account">
+            <summary>
+            银行账户
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.BankAccountPersion">
+            <summary>
+            持卡人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.BankAccountPersionTel">
+            <summary>
+            持卡人电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.BankAccountType">
+            <summary>
+            用途
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.BankSubName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountOutput.PaymentMethodTypeNames">
+            <summary>
+            关联收款方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.BankName">
+            <summary>
+            银行名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.Account">
+            <summary>
+            银行账户
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.BankAccountPersion">
+            <summary>
+            持卡人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.BankAccountPersionTel">
+            <summary>
+            持卡人电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.BankAccountType">
+            <summary>
+            用途
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.BankSubName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput.PaymentMethodTypeNames">
+            <summary>
+            关联收款方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.BankName">
+            <summary>
+            银行名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.Account">
+            <summary>
+            银行账户
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.BankAccountPersion">
+            <summary>
+            持卡人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.BankAccountPersionTel">
+            <summary>
+            持卡人电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.BankAccountType">
+            <summary>
+            用途
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.BankSubName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput.PaymentMethodTypeNames">
+            <summary>
+            关联收款方式
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.IBankAccountAppService.GetAllBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetBankAccountInput)">
+            <summary>
+            获取所有的银行账户列表
+            </summary>
+            <param name="getAllBankAccountInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.IBankAccountAppService.GetSingleBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.GetSingleBankAccountInput)">
+            <summary>
+            获取单个银行账户
+            </summary>
+            <param name="getSingleBankAccountInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.IBankAccountAppService.InsertBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.InsertBankAccountInput)">
+            <summary>
+            新增银行账户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.IBankAccountAppService.UpdateBankAccount(AfarsoftResourcePlan.Erp.BankAccounts.Dto.UpdateBankAccountInput)">
+            <summary>
+            修改银行账户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.BankAccounts.IBankAccountAppService.DeleteBankAccount(System.Guid)">
+            <summary>
+            删除银行账户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.BrandAppService.GetAllBrand(AfarsoftResourcePlan.Erp.Brands.Dto.GetBrandInput)">
+            <summary>
+            获取所有品牌
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.BrandAppService.InsertBrand(AfarsoftResourcePlan.Erp.Brands.Dto.InsertBrandInput)">
+            <summary>
+            新增品牌
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.BrandAppService.UpdateBrand(AfarsoftResourcePlan.Erp.Brands.Dto.UpdateBrandInput)">
+            <summary>
+            修改品牌
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.BrandAppService.DeleteBrand(System.Guid)">
+            <summary>
+            删除品牌
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Brands.Dto.GetBrandInput.BrandCodeOrName">
+            <summary>
+            品牌编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Brands.Dto.InsertBrandInput.BrandName">
+            <summary>
+            品牌名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Brands.Dto.InsertBrandInput.Code">
+            <summary>
+            品牌编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Brands.Dto.UpdateBrandInput.BrandName">
+            <summary>
+            品牌名称
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.IBrandAppService.GetAllBrand(AfarsoftResourcePlan.Erp.Brands.Dto.GetBrandInput)">
+            <summary>
+            获取所有的品牌列表
+            </summary>
+            <param name="getAllBrandInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.IBrandAppService.GetSingleBrand(AfarsoftResourcePlan.Erp.Brands.Dto.GetSingleBrandInput)">
+            <summary>
+            获取单个品牌
+            </summary>
+            <param name="getSingleBrandInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.IBrandAppService.InsertBrand(AfarsoftResourcePlan.Erp.Brands.Dto.InsertBrandInput)">
+            <summary>
+            新增品牌
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.IBrandAppService.UpdateBrand(AfarsoftResourcePlan.Erp.Brands.Dto.UpdateBrandInput)">
+            <summary>
+            修改品牌
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Brands.IBrandAppService.DeleteBrand(System.Guid)">
+            <summary>
+            删除品牌
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.CatalogAppService.GetAllCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.GetCatalogInput)">
+            <summary>
+            获取所有分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.CatalogAppService.InsertCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput)">
+            <summary>
+            新增分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.CatalogAppService.UpdateCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput)">
+            <summary>
+            修改分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.CatalogAppService.DeleteCatalog(System.Int32)">
+            <summary>
+            删除分类
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.GetCatalogInput.CatalogCodeOrName">
+            <summary>
+            分类编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.CatalogName">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.Code">
+            <summary>
+            分类编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.FatherId">
+            <summary>
+            上级分类
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.CatalogType">
+            <summary>
+            区域等级
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.IdRealation">
+            <summary>
+            区域关系
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.NameRealation">
+            <summary>
+            区域说明
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.IsEnd">
+            <summary>
+            是否末级
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput.CatalogName">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput.FatherId">
+            <summary>
+            上级分类
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput.CatalogType">
+            <summary>
+            区域等级
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput.IdRealation">
+            <summary>
+            区域关系
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput.NameRealation">
+            <summary>
+            区域说明
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput.IsEnd">
+            <summary>
+            是否末级
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.ICatalogAppService.GetAllCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.GetCatalogInput)">
+            <summary>
+            获取所有的分类列表
+            </summary>
+            <param name="getAllCatalogInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.ICatalogAppService.GetSingleCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.GetSingleCatalogInput)">
+            <summary>
+            获取单个分类
+            </summary>
+            <param name="getSingleCatalogInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.ICatalogAppService.InsertCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.InsertCatalogInput)">
+            <summary>
+            新增分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.ICatalogAppService.UpdateCatalog(AfarsoftResourcePlan.Erp.Catalogs.Dto.UpdateCatalogInput)">
+            <summary>
+            修改分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Catalogs.ICatalogAppService.DeleteCatalog(System.Int32)">
+            <summary>
+            删除分类
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput.GoodsCodeOrName">
+            <summary>
+            商品编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput.CatalogId">
+            <summary>
+            分类ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput.SupplierId">
+            <summary>
+            供应商ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.CtatologId">
+            <summary>
+            商品分类id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.Barcode">
+            <summary>
+            商品主条码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.ThirdCode">
+            <summary>
+            第三方码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.BrandId">
+            <summary>
+            品牌id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.GoodsName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.Model">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.MnemonicCode">
+            <summary>
+            助记码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.ShortName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.IfWeight">
+            <summary>
+            计价方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.PLU">
+            <summary>
+            PLU
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.GoodType">
+            <summary>
+            商品类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.CostPrince">
+            <summary>
+            基础进价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.ProductionPlace">
+            <summary>
+            产地
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.InputTax">
+            <summary>
+            进项税
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.OutputTax">
+            <summary>
+            销项税
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.Status">
+            <summary>
+            商品状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.ShelfLife">
+            <summary>
+            保质期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.DeliveryCycle">
+            <summary>
+            采购周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.DiscType">
+            <summary>
+            促销类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.IfShare">
+            <summary>
+            是否共享商品
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.Stock">
+            <summary>
+            是否管理库存
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.SetPrice">
+            <summary>
+            是否定价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.PreBargain">
+            <summary>
+            前台议价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.PreGive">
+            <summary>
+            前台赠送
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.IsScore">
+            <summary>
+            是否积分
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.imageListInput">
+            <summary>
+            商品图片列表
+            </summary>
+        </member>
+        <!-- 对于成员“P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.barcodeListInput”忽略有格式错误的 XML 注释 -->
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.priceInput">
+            <summary>
+            条码列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.supplierListInput">
+            <summary>
+            供应商列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsOutput.pkSupplierListInput">
+            <summary>
+            主供应商列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsBarcodeInput.Barcode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsImageInput.GoodsImgUrl">
+            <summary>
+            图片Url
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Rprice">
+            <summary>
+            零售价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice">
+            <summary>
+            批发价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice1">
+            <summary>
+             批发价1
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice2">
+            <summary>
+             批发价2
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice4">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice5">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice6">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice7">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Wprice8">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Disprice">
+            <summary>
+            促销价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Mprice">
+            <summary>
+            会员价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.Dprice">
+            <summary>
+            配送价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.SaleState">
+            <summary>
+            销售状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.PurchaseState">
+            <summary>
+            采购状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPriceInput.DeliveryState">
+            <summary>
+            配送状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPrimarySupplierInput.GoodsId">
+            <summary>
+            商品id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsPrimarySupplierInput.SupplierId">
+            <summary>
+            供应商ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsSupplierInput.GoodsId">
+            <summary>
+            商品id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsSupplierInput.SupplierId">
+            <summary>
+            供应商ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsSupplierInput.Type">
+            <summary>
+            是否主供应商
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsSupplierInput.Bprice">
+            <summary>
+            进货价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsSupplierInput.HighPrice">
+            <summary>
+            最高价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.GoodsSupplierInput.LowPrice">
+            <summary>
+            最低价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.CtatologId">
+            <summary>
+            商品分类id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.Barcode">
+            <summary>
+            商品主条码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.ThirdCode">
+            <summary>
+            第三方码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.BrandId">
+            <summary>
+            品牌id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.GoodsName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.Model">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.MnemonicCode">
+            <summary>
+            助记码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.ShortName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.IfWeight">
+            <summary>
+            计价方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.PLU">
+            <summary>
+            PLU
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.GoodType">
+            <summary>
+            商品类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.CostPrince">
+            <summary>
+            基础进价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.ProductionPlace">
+            <summary>
+            产地
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.InputTax">
+            <summary>
+            进项税
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.OutputTax">
+            <summary>
+            销项税
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.Status">
+            <summary>
+            商品状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.ShelfLife">
+            <summary>
+            保质期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.DeliveryCycle">
+            <summary>
+            采购周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.DiscType">
+            <summary>
+            促销类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.IfShare">
+            <summary>
+            是否共享商品
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.Stock">
+            <summary>
+            是否管理库存
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.SetPrice">
+            <summary>
+            是否定价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.PreBargain">
+            <summary>
+            前台议价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.PreGive">
+            <summary>
+            前台赠送
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.IsScore">
+            <summary>
+            是否积分
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.imageListInput">
+            <summary>
+            商品图片列表
+            </summary>
+        </member>
+        <!-- 对于成员“P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.barcodeListInput”忽略有格式错误的 XML 注释 -->
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.priceInput">
+            <summary>
+            条码列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.supplierListInput">
+            <summary>
+            供应商列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput.goodsFrom">
+            <summary>
+            商品来源，用于判定是否共享商品或自建商品的条件之一
+            共享商品条件：总部在共享商品页面创建的商品叫共享商品；1，总部创建；2在共享页面创建
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.CtatologId">
+            <summary>
+            商品分类id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.Barcode">
+            <summary>
+            商品主条码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.ThirdCode">
+            <summary>
+            第三方码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.BrandId">
+            <summary>
+            品牌id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.GoodsName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.Model">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.MnemonicCode">
+            <summary>
+            助记码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.ShortName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.IfWeight">
+            <summary>
+            计价方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.PLU">
+            <summary>
+            PLU
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.GoodType">
+            <summary>
+            商品类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.CostPrince">
+            <summary>
+            基础进价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.ProductionPlace">
+            <summary>
+            产地
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.InputTax">
+            <summary>
+            进项税
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.OutputTax">
+            <summary>
+            销项税
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.Status">
+            <summary>
+            商品状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.ShelfLife">
+            <summary>
+            保质期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.DeliveryCycle">
+            <summary>
+            采购周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.DiscType">
+            <summary>
+            促销类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.IfShare">
+            <summary>
+            是否共享商品
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.Stock">
+            <summary>
+            是否管理库存
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.SetPrice">
+            <summary>
+            是否定价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.PreBargain">
+            <summary>
+            前台议价
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.PreGive">
+            <summary>
+            前台赠送
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.IsScore">
+            <summary>
+            是否积分
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.imageListInput">
+            <summary>
+            商品图片列表
+            </summary>
+        </member>
+        <!-- 对于成员“P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.barcodeListInput”忽略有格式错误的 XML 注释 -->
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.priceInput">
+            <summary>
+            条码列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.supplierListInput">
+            <summary>
+            供应商列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.primarySupplierdeListInput">
+            <summary>
+            商品主供应商列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput.goodsFrom">
+            <summary>
+            商品来源，用于判定是否共享商品或自建商品的条件之一
+            共享商品条件：总部在共享商品页面创建的商品叫共享商品；1，总部创建；2在共享页面创建
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.GoodsAppService.GetAllGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput)">
+            <summary>
+            获取所有商品
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.GoodsAppService.GetSingleGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetSingleGoodsInput)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.GoodsAppService.GetGoodsListBySupplierId(AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput)">
+            <summary>
+            根据供应商ID获取商品信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.GoodsAppService.InsertGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput)">
+            <summary>
+            新增商品
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.GoodsAppService.UpdateGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput)">
+            <summary>
+            修改商品
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.GoodsAppService.DeleteGoods(System.Guid)">
+            <summary>
+            删除商品
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.IGoodsAppService.GetAllGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput)">
+            <summary>
+            获取所有的商品列表
+            </summary>
+            <param name="getAllGoodsInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.IGoodsAppService.GetSingleGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetSingleGoodsInput)">
+            <summary>
+            获取单个商品
+            </summary>
+            <param name="getSingleGoodsInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.IGoodsAppService.GetGoodsListBySupplierId(AfarsoftResourcePlan.Erp.GoodsManager.Dto.GetGoodsInput)">
+            <summary>
+            根据供应商ID获取商品信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.IGoodsAppService.InsertGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.InsertGoodsInput)">
+            <summary>
+            新增商品
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.IGoodsAppService.UpdateGoods(AfarsoftResourcePlan.Erp.GoodsManager.Dto.UpdateGoodsInput)">
+            <summary>
+            修改商品
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.GoodsManager.IGoodsAppService.DeleteGoods(System.Guid)">
+            <summary>
+            删除商品
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.GetLossSpillTypeInput.LossSpillTypeNameOrCode">
+            <summary>
+            损溢类型编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.GetLossSpillTypeInput.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.InsertLossSpillTypeInput.Code">
+            <summary>
+            类型编号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.InsertLossSpillTypeInput.Type">
+            <summary>
+            损溢性质:分报损类型和报溢类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.InsertLossSpillTypeInput.LossSpillName">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.UpdateLossSpillTypeInput.Type">
+            <summary>
+            损溢性质:分报损类型和报溢类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.UpdateLossSpillTypeInput.LossSpillName">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.ILossSpillTypeAppService.GetAllLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.GetLossSpillTypeInput)">
+            <summary>
+            获取所有的损溢类型列表
+            </summary>
+            <param name="getAllLossSpillTypeInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.ILossSpillTypeAppService.GetSingleLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.GetSingleLossSpillTypeInput)">
+            <summary>
+            获取单个损溢类型
+            </summary>
+            <param name="getSingleLossSpillTypeInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.ILossSpillTypeAppService.InsertLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.InsertLossSpillTypeInput)">
+            <summary>
+            新增损溢类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.ILossSpillTypeAppService.UpdateLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.UpdateLossSpillTypeInput)">
+            <summary>
+            修改损溢类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.ILossSpillTypeAppService.DeleteLossSpillType(System.Guid)">
+            <summary>
+            删除损溢类型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.LossSpillTypeAppService.GetAllLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.GetLossSpillTypeInput)">
+            <summary>
+            获取所有损溢类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.LossSpillTypeAppService.InsertLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.InsertLossSpillTypeInput)">
+            <summary>
+            新增损溢类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.LossSpillTypeAppService.UpdateLossSpillType(AfarsoftResourcePlan.Erp.LossSpillTypes.Dto.UpdateLossSpillTypeInput)">
+            <summary>
+            修改损溢类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.LossSpillTypes.LossSpillTypeAppService.DeleteLossSpillType(System.Guid)">
+            <summary>
+            删除损溢类型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.GetMoneyTypeInput.MoneyTypeCodeOrName">
+            <summary>
+            费用类型编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.Code">
+            <summary>
+            类型编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.TypeName">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.TypeType">
+            <summary>
+            类型适用
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.UpdateMoneyTypeInput.TypeName">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.MoneyTypes.Dto.UpdateMoneyTypeInput.TypeType">
+            <summary>
+            类型适用
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.IMoneyTypeAppService.GetAllMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.GetMoneyTypeInput)">
+            <summary>
+            获取所有的费用类型列表
+            </summary>
+            <param name="getAllMoneyTypeInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.IMoneyTypeAppService.GetSingleMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.GetSingleMoneyTypeInput)">
+            <summary>
+            获取单个费用类型
+            </summary>
+            <param name="getSingleMoneyTypeInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.IMoneyTypeAppService.InsertMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput)">
+            <summary>
+            新增费用类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.IMoneyTypeAppService.UpdateMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.UpdateMoneyTypeInput)">
+            <summary>
+            修改费用类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.IMoneyTypeAppService.DeleteMoneyType(System.Guid)">
+            <summary>
+            删除费用类型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.MoneyTypeAppService.GetAllMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.GetMoneyTypeInput)">
+            <summary>
+            获取所有费用类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.MoneyTypeAppService.InsertMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.InsertMoneyTypeInput)">
+            <summary>
+            新增费用类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.MoneyTypeAppService.UpdateMoneyType(AfarsoftResourcePlan.Erp.MoneyTypes.Dto.UpdateMoneyTypeInput)">
+            <summary>
+            修改费用类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.MoneyTypes.MoneyTypeAppService.DeleteMoneyType(System.Guid)">
+            <summary>
+            删除费用类型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.WarehouseId">
+            <summary>
+            仓库ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.GoodsId">
+            <summary>
+            商品ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.QuantityChange">
+            <summary>
+            商品数量
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.GiveQuantityChange">
+            <summary>
+            赠送数量
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.GoodsPrice">
+            <summary>
+            商品价格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.GoodsPriceNoTax">
+            <summary>
+            不含税商品价格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.OrderId">
+            <summary>
+            单据Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.OrderDetailId">
+            <summary>
+            单据明细Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.OrderType">
+            <summary>
+            单据类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseDetailInput.OrderCode">
+            <summary>
+            单据编码
+            </summary>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationInput">
+            <summary>
+            库存明细操作Dto
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationInput.OperationGoodsList">
+            <summary>
+            需要处理的商品列表
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationOutput.WarehouseId">
+            <summary>
+            仓库ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationOutput.GoodsId">
+            <summary>
+            商品ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationOutput.OrderId">
+            <summary>
+            单据Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationOutput.OrderDetailId">
+            <summary>
+            单据明细Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationOutput.GoodsCost">
+            <summary>
+            商品成本
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.OperationInventory.IWarehouseInventoryAppService.InWarehouseOperation(AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationInput)">
+            <summary>
+            入库操作
+            </summary>
+            <param name="inWarehouseOperationInput">库存操作Dto</param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventoryAppService.InWarehouseOperation(AfarsoftResourcePlan.Erp.OperationInventory.WarehouseInventory.Dto.InWarehouseOperationInput)">
+            <summary>
+            入库操作
+            </summary>
+            <param name="inWarehouseOperationInput">库存操作Dto</param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.GetOrganizationInput.OrganizationCodeOrName">
+            <summary>
+            机构编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.EnterpriseCode">
+            <summary>
+            企业编号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrgAreaId">
+            <summary>
+            机构区域
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.Dprice">
+            <summary>
+            配送价格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.KLx">
+            <summary>
+            加价率
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrganizationType">
+            <summary>
+            机构类型:直营店或加盟店
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrganizationContact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.CellPhone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrganizationTaxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.OrganizationAddr">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.LAL">
+            <summary>
+            经纬度
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.Nature">
+            <summary>
+            机构性质:总部或门店
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.OrgAreaId">
+            <summary>
+            机构区域
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.Dprice">
+            <summary>
+            配送价格
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.KLx">
+            <summary>
+            加价率
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.OrganizationType">
+            <summary>
+            机构类型:直营店或加盟店
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.OrganizationContact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.CellPhone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.OrganizationTaxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.OrganizationAddr">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.LAL">
+            <summary>
+            经纬度
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.Nature">
+            <summary>
+            机构性质:总部或门店
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.IOrganizationAppService.GetAllOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.GetOrganizationInput)">
+            <summary>
+            获取所有的机构列表
+            </summary>
+            <param name="getAllOrganizationInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.IOrganizationAppService.GetSingleOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.GetSingleOrganizationInput)">
+            <summary>
+            获取单个机构
+            </summary>
+            <param name="getSingleOrganizationInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.IOrganizationAppService.InsertOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput)">
+            <summary>
+            新增机构
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.IOrganizationAppService.UpdateOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput)">
+            <summary>
+            修改机构
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.IOrganizationAppService.DeleteOrganization(System.Guid)">
+            <summary>
+            删除机构
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.OrganizationAppService.GetAllOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.GetOrganizationInput)">
+            <summary>
+            获取所有组织机构
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.OrganizationAppService.InsertOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.InsertOrganizationInput)">
+            <summary>
+            新增机构
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.OrganizationAppService.UpdateOrganization(AfarsoftResourcePlan.Erp.Organizations.Dto.UpdateOrganizationInput)">
+            <summary>
+            修改机构
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Organizations.OrganizationAppService.DeleteOrganization(System.Guid)">
+            <summary>
+            删除机构
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.GetPaymentMethodInput.PaymentMethodName">
+            <summary>
+            付款方式编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.PaymentMethodName">
+            <summary>
+            付款方式名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.Code">
+            <summary>
+            付款方式编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.UpdatePaymentMethodInput.PaymentMethodName">
+            <summary>
+            付款方式名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.UpdatePaymentMethodInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.UpdatePaymentMethodInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.PaymentMethods.Dto.UpdatePaymentMethodInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.IPaymentMethodAppService.GetAllPaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.GetPaymentMethodInput)">
+            <summary>
+            获取所有的付款方式列表
+            </summary>
+            <param name="getAllPaymentMethodInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.IPaymentMethodAppService.GetSinglePaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.GetSinglePaymentMethodInput)">
+            <summary>
+            获取单个付款方式
+            </summary>
+            <param name="getSinglePaymentMethodInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.IPaymentMethodAppService.InsertPaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput)">
+            <summary>
+            新增付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.IPaymentMethodAppService.UpdatePaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.UpdatePaymentMethodInput)">
+            <summary>
+            修改付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.IPaymentMethodAppService.DeletePaymentMethod(System.Guid)">
+            <summary>
+            删除付款方式
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.PaymentMethodAppService.GetAllPaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.GetPaymentMethodInput)">
+            <summary>
+            获取所有付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.PaymentMethodAppService.InsertPaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.InsertPaymentMethodInput)">
+            <summary>
+            新增付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.PaymentMethodAppService.UpdatePaymentMethod(AfarsoftResourcePlan.Erp.PaymentMethods.Dto.UpdatePaymentMethodInput)">
+            <summary>
+            修改付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.PaymentMethods.PaymentMethodAppService.DeletePaymentMethod(System.Guid)">
+            <summary>
+            删除付款方式
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.GetPaywayInput.PaywayCodeOrName">
+            <summary>
+            零售付款方式编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.GetPaywayOutput.FatherId">
+            <summary>
+            父id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.GetPaywayOutput.LossRatio">
+            <summary>
+            损失分摊比例（按子付款方式）
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.PaywayName">
+            <summary>
+            零售付款方式名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.Code">
+            <summary>
+            零售付款方式编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.FatherId">
+            <summary>
+            父id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.LossRatio">
+            <summary>
+            损失分摊比例（按子付款方式）
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.AreaType">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.IdRealation">
+            <summary>
+            关系
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput.NameRealation">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.PaywayName">
+            <summary>
+            零售付款方式名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.FatherId">
+            <summary>
+            父id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.LossRatio">
+            <summary>
+            损失分摊比例（按子付款方式）
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.AreaType">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.IdRealation">
+            <summary>
+            关系
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput.NameRealation">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.IPaywayAppService.GetAllPayway(AfarsoftResourcePlan.Erp.Payways.Dto.GetPaywayInput)">
+            <summary>
+            获取所有的零售付款方式列表
+            </summary>
+            <param name="getAllPaywayInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.IPaywayAppService.GetSinglePayway(AfarsoftResourcePlan.Erp.Payways.Dto.GetSinglePaywayInput)">
+            <summary>
+            获取单个零售付款方式
+            </summary>
+            <param name="getSinglePaywayInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.IPaywayAppService.InsertPayway(AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput)">
+            <summary>
+            新增零售付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.IPaywayAppService.UpdatePayway(AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput)">
+            <summary>
+            修改零售付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.IPaywayAppService.DeletePayway(System.Guid)">
+            <summary>
+            删除零售付款方式
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.PaywayAppService.GetAllPayway(AfarsoftResourcePlan.Erp.Payways.Dto.GetPaywayInput)">
+            <summary>
+            获取所有零售付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.PaywayAppService.InsertPayway(AfarsoftResourcePlan.Erp.Payways.Dto.InsertPaywayInput)">
+            <summary>
+            新增零售付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.PaywayAppService.UpdatePayway(AfarsoftResourcePlan.Erp.Payways.Dto.UpdatePaywayInput)">
+            <summary>
+            修改零售付款方式
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Payways.PaywayAppService.DeletePayway(System.Guid)">
+            <summary>
+            删除零售付款方式
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.GetSupplierAreaInput.SupplierAreaCodeOrName">
+            <summary>
+            供应商区域编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput.AreaName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput.FatherId">
+            <summary>
+            上级区域id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput.AreaType">
+            <summary>
+            区域等级
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput.IdRealation">
+            <summary>
+            区域关系
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput.NameRealation">
+            <summary>
+            区域说明
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.UpdateSupplierAreaInput.AreaName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.SupplierAreas.Dto.UpdateSupplierAreaInput.NameRealation">
+            <summary>
+            区域说明
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.ISupplierAreaAppService.GetAllSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.GetSupplierAreaInput)">
+            <summary>
+            获取所有的供应商区域列表
+            </summary>
+            <param name="getAllSupplierAreaInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.ISupplierAreaAppService.GetSingleSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.GetSingleSupplierAreaInput)">
+            <summary>
+            获取单个供应商区域
+            </summary>
+            <param name="getSingleSupplierAreaInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.ISupplierAreaAppService.InsertSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput)">
+            <summary>
+            新增供应商区域
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.ISupplierAreaAppService.UpdateSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.UpdateSupplierAreaInput)">
+            <summary>
+            修改供应商区域
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.ISupplierAreaAppService.DeleteSupplierArea(System.Int32)">
+            <summary>
+            删除供应商区域
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.SupplierAreaAppService.GetAllSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.GetSupplierAreaInput)">
+            <summary>
+            获取所有供应商区域
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.SupplierAreaAppService.InsertSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.InsertSupplierAreaInput)">
+            <summary>
+            新增供应商区域
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.SupplierAreaAppService.UpdateSupplierArea(AfarsoftResourcePlan.Erp.SupplierAreas.Dto.UpdateSupplierAreaInput)">
+            <summary>
+            修改供应商区域
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.SupplierAreas.SupplierAreaAppService.DeleteSupplierArea(System.Int32)">
+            <summary>
+            删除供应商区域
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierInput.SupplierCodeOrName">
+            <summary>
+            供应商编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.SupplierContect">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.MnemonicCode">
+            <summary>
+            助记码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.CellPhone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Tel">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Taxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Mode">
+            <summary>
+            经营方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.AreaId">
+            <summary>
+            区域id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.AreaName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.SettlementType">
+            <summary>
+            结算方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.SuppliserSettlement">
+            <summary>
+            结账周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.DeliveryCycle">
+            <summary>
+            送货周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Bank">
+            <summary>
+            月结账日期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.CompanyNature">
+            <summary>
+            注册类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.SuppliserTicketInfo">
+            <summary>
+            户名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.BackName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierOutput.TFN">
+            <summary>
+            税务登记号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.SupplierName">
+            <summary>
+            供应商名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Code">
+            <summary>
+            供应商编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.SupplierContect">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.MnemonicCode">
+            <summary>
+            助记码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.CellPhone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Tel">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Taxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Mode">
+            <summary>
+            经营方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.AreaId">
+            <summary>
+            区域id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.SettlementType">
+            <summary>
+            结算方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.SuppliserSettlement">
+            <summary>
+            结账周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.DeliveryCycle">
+            <summary>
+            送货周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Bank">
+            <summary>
+            月结账日期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.CompanyNature">
+            <summary>
+            注册类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.SuppliserTicketInfo">
+            <summary>
+            户名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.BackName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.TFN">
+            <summary>
+            税务登记号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.LicenseiImgUrl">
+            <summary>
+            营业执照
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.PermitImgUr">
+            <summary>
+            许可证
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput.IsAllowNoOrder">
+            <summary>
+            允许无订单收货
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.SupplierName">
+            <summary>
+            供应商名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.SupplierContect">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.MnemonicCode">
+            <summary>
+            助记码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.CellPhone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Tel">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Taxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Mode">
+            <summary>
+            经营方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.AreaId">
+            <summary>
+            区域id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.SettlementType">
+            <summary>
+            结算方式
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.SuppliserSettlement">
+            <summary>
+            结账周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.DeliveryCycle">
+            <summary>
+            送货周期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Bank">
+            <summary>
+            月结账日期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.CompanyNature">
+            <summary>
+            注册类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.SuppliserTicketInfo">
+            <summary>
+            户名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.BackName">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.TFN">
+            <summary>
+            税务登记号
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.LicenseiImgUrl">
+            <summary>
+            营业执照
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.PermitImgUr">
+            <summary>
+            许可证
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput.IsAllowNoOrder">
+            <summary>
+            允许无订单收货
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.ISupplierAppService.GetAllSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierInput)">
+            <summary>
+            获取所有的供应商列表
+            </summary>
+            <param name="getAllSupplierInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.ISupplierAppService.GetSupplierList(AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierInput)">
+            <summary>
+            获取供应商列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.ISupplierAppService.GetSingleSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSingleSupplierInput)">
+            <summary>
+            获取单个供应商
+            </summary>
+            <param name="getSingleSupplierInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.ISupplierAppService.InsertSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput)">
+            <summary>
+            新增供应商
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.ISupplierAppService.UpdateSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput)">
+            <summary>
+            修改供应商
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.ISupplierAppService.DeleteSupplier(System.Guid)">
+            <summary>
+            删除供应商
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.SupplierAppService.GetAllSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierInput)">
+            <summary>
+            获取所有供应商
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.SupplierAppService.GetSupplierList(AfarsoftResourcePlan.Erp.Suppliers.Dto.GetSupplierInput)">
+            <summary>
+            获取当前企业下的供应商列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.SupplierAppService.InsertSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.InsertSupplierInput)">
+            <summary>
+            新增供应商
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.SupplierAppService.UpdateSupplier(AfarsoftResourcePlan.Erp.Suppliers.Dto.UpdateSupplierInput)">
+            <summary>
+            修改供应商
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.Suppliers.SupplierAppService.DeleteSupplier(System.Guid)">
+            <summary>
+            删除供应商
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.UserInfoCodeOrName">
+            <summary>
+            用户编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.OrgId">
+            <summary>
+            机构Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.IsDaoGouMan">
+            <summary>
+            是否是导购员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.IsYewuMan">
+            <summary>
+            是否是业务员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.IsCaigouMan">
+            <summary>
+            是否是采购员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.HasLoginCashier">
+            <summary>
+            是否能登陆前台
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput.HasLoginBackstage">
+            <summary>
+            是否能登陆后台
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoOutput.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoOutput.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoOutput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoOutput.OrganizationName">
+            <summary>
+            所属机构
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.RealName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.IsDaoGouMan">
+            <summary>
+            是否是导购员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.IsYewuMan">
+            <summary>
+            是否是业务员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.IsCaigouMan">
+            <summary>
+            是否是采购员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.HasLoginCashier">
+            <summary>
+            是否能登陆前台
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.HasLoginBackstage">
+            <summary>
+            是否能登陆后台
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.RealName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.IsDaoGouMan">
+            <summary>
+            是否是导购员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.IsYewuMan">
+            <summary>
+            是否是业务员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.IsCaigouMan">
+            <summary>
+            是否是采购员
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.HasLoginCashier">
+            <summary>
+            是否能登陆前台
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.HasLoginBackstage">
+            <summary>
+            是否能登陆后台
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.IUserInfoAppService.GetAllUserInfoForPage(AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput)">
+            <summary>
+            获取所有的用户列表
+            </summary>
+            <param name="getAllUserInfoInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.IUserInfoAppService.GetAllUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput)">
+            <summary>
+            根据条件获取当前企业下的用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.IUserInfoAppService.GetSingleUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.GetSingleUserInfoInput)">
+            <summary>
+            获取单个用户
+            </summary>
+            <param name="getSingleUserInfoInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.IUserInfoAppService.InsertUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput)">
+            <summary>
+            新增用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.IUserInfoAppService.UpdateUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput)">
+            <summary>
+            修改用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.IUserInfoAppService.DeleteUserInfo(System.Guid)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.UserInfoAppService.GetAllUserInfoForPage(AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput)">
+            <summary>
+            获取所有用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.UserInfoAppService.GetAllUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.GetUserInfoInput)">
+            <summary>
+            根据条件获取当前企业下的用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.UserInfoAppService.InsertUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.InsertUserInfoInput)">
+            <summary>
+            新增用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.UserInfoAppService.UpdateUserInfo(AfarsoftResourcePlan.Erp.UserInfos.Dto.UpdateUserInfoInput)">
+            <summary>
+            修改用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.UserInfos.UserInfoAppService.DeleteUserInfo(System.Guid)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseInput.WareHouseCodeOrName">
+            <summary>
+            编码或名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.WarehouseName">
+            <summary>
+            仓库名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.WarehouseContact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.CellPhone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.Taxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.CostHighAlarm">
+            <summary>
+            仓库高报
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.CostLowAlarm">
+            <summary>
+            仓库低报
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.WarehouseAddr">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.LAL">
+            <summary>
+            经纬度
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.IsDefault">
+            <summary>
+            是否默认仓库
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseOutput.TenantId">
+            <summary>
+            租户ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.WarehouseName">
+            <summary>
+            仓库名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.WarehouseContact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.CellPhone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.Taxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.CostHighAlarm">
+            <summary>
+            仓库高报
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.CostLowAlarm">
+            <summary>
+            仓库低报
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.WarehouseAddr">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.LAL">
+            <summary>
+            经纬度
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.EnterpriseId">
+            <summary>
+            企业ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.EnterpriseCode">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.OrganizationCode">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.OrganizationName">
+            <summary>
+            机构名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.MarkerId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.MarkerName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.MarkerTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.TenantId">
+            <summary>
+            租户ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.OrganizationId">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.WarehouseName">
+            <summary>
+            仓库名称
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.WarehouseContact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.CellPhone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.PostalCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.Taxcode">
+            <summary>
+            传真
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.CostHighAlarm">
+            <summary>
+            仓库高报
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.CostLowAlarm">
+            <summary>
+            仓库低报
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.WarehouseAddr">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.LAL">
+            <summary>
+            经纬度
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.MarkerRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.LastModifierUserId">
+            <summary>
+            最后修改人Id
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.LastModifierUserName">
+            <summary>
+            最后修改人姓名
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.LastModifierTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput.TenantId">
+            <summary>
+            租户ID
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.IWareHouseAppService.GetAllWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseInput)">
+            <summary>
+            获取所有的仓库列表
+            </summary>
+            <param name="getAllWareHouseInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.IWareHouseAppService.GetWareHouseList">
+            <summary>
+            获取当前企业下所有仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.IWareHouseAppService.GetSingleWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.GetSingleWareHouseInput)">
+            <summary>
+            获取单个仓库
+            </summary>
+            <param name="getSingleWareHouseInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.IWareHouseAppService.InsertWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput)">
+            <summary>
+            新增仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.IWareHouseAppService.UpdateWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput)">
+            <summary>
+            修改仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.IWareHouseAppService.DeleteWareHouse(System.Guid)">
+            <summary>
+            删除仓库
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.WareHouseAppService.GetAllWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.GetWareHouseInput)">
+            <summary>
+            获取所有仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.WareHouseAppService.GetWareHouseList">
+            <summary>
+            获取当前企业下所有仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.WareHouseAppService.InsertWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.InsertWareHouseInput)">
+            <summary>
+            新增仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.WareHouseAppService.UpdateWareHouse(AfarsoftResourcePlan.Erp.WareHouses.Dto.UpdateWareHouseInput)">
+            <summary>
+            修改仓库
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Erp.WareHouses.WareHouseAppService.DeleteWareHouse(System.Guid)">
+            <summary>
+            删除仓库
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames">
+            <summary>
+            Common mime types. 
+            </summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXJavascript">
+            <summary>Used to denote the encoding necessary for files containing JavaScript source code. The alternative MIME type for this file type is text/javascript.</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioL24">
+            <summary>24bit Linear PCM audio at 8-48kHz, 1-N channels; Defined in RFC 3190</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXShockwaveFlash">
+            <summary>Adobe Flash files for example with the extension .swf</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationOctetStream">
+            <summary>Arbitrary binary data.[5] Generally speaking this type identifies files that are not associated with a specific application. Contrary to past assumptions by software packages such as Apache this is not a type that should be applied to unknown files. In such a case, a server or application should not indicate a content type, as it may be incorrect, but rather, should omit the type in order to allow the recipient to guess the type.[6]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationAtomXml">
+            <summary>Atom feeds</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextCss">
+            <summary>Cascading Style Sheets; Defined in RFC 2318</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextCmd">
+            <summary>commands; subtype resident in Gecko browsers like Firefox 3.5</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextCsv">
+            <summary>Comma-separated values; Defined in RFC 4180</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXDeb">
+            <summary>deb (file format), a software package format used by the Debian project</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MultipartEncrypted">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MultipartSigned">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MessageHttp">
+            <summary>Defined in RFC 2616</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelExample">
+            <summary>Defined in RFC 4735</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXDvi">
+            <summary>device-independent document in DVI format</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXmlDtd">
+            <summary>DTD files; Defined by RFC 3023</summary>
+        </member>
+        <!-- 对于成员“F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationJavascript”忽略有格式错误的 XML 注释 -->
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationEcmascript">
+            <summary>ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/javascript but with stricter processing rules)</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationEdifact">
+            <summary>EDI EDIFACT data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationEdiX12">
+            <summary>EDI X12 data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MessagePartial">
+            <summary>Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MessageRfc822">
+            <summary>Email; EML files, MIME files, MHT files, MHTML files; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextXml">
+            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoXFlv">
+            <summary>Flash video (FLV files)</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImageGif">
+            <summary>GIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextXGwtRpc">
+            <summary>GoogleWebToolkit data</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXGzip">
+            <summary>Gzip</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextHtml">
+            <summary>HTML; Defined in RFC 2854</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImageVndMicrosoftIcon">
+            <summary>ICO image; Registered[9]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelIges">
+            <summary>IGS files, IGES files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MessageImdnXml">
+            <summary>IMDN Instant Message Disposition Notification; Defined in RFC 5438</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationJson">
+            <summary>JavaScript Object Notation JSON; Defined in RFC 4627</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationJsonPatch">
+            <summary>JavaScript Object Notation (JSON) Patch; Defined in RFC 6902</summary>
+        </member>
+        <!-- 对于成员“F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextJavascript”忽略有格式错误的 XML 注释 -->
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImagePjpeg">
+            <summary>JPEG JFIF image; Associated with Internet Explorer; Listed in ms775147(v=vs.85) - Progressive JPEG, initiated before global browser support for progressive JPEGs (Microsoft and Firefox).</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImageJpeg">
+            <summary>JPEG JFIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextXJqueryTmpl">
+            <summary>jQuery template data</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndGoogleEarthKmlXml">
+            <summary>KML files (e.g. for Google Earth)</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXLatex">
+            <summary>LaTeX files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoXMatroska">
+            <summary>Matroska open media format</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet">
+            <summary>Microsoft Excel 2007 files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndMsExcel">
+            <summary>Microsoft Excel files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation">
+            <summary>Microsoft Powerpoint 2007 files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndMsPowerpoint">
+            <summary>Microsoft Powerpoint files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument">
+            <summary>Microsoft Word 2007 files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationMsword">
+            <summary>Microsoft Word files[15]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MultipartAlternative">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MultipartMixed">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MultipartRelated">
+            <summary>MIME Email; Defined in RFC 2387 and used by MHTML (HTML mail)</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.MultipartFormData">
+            <summary>MIME Webform; Defined in RFC 2388</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndMozillaXulXml">
+            <summary>Mozilla XUL files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioMpeg">
+            <summary>MP3 or other MPEG audio; Defined in RFC 3003</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioMp4">
+            <summary>MP4 audio</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoMp4">
+            <summary>MP4 video; Defined in RFC 4337</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoMpeg">
+            <summary>MPEG-1 video with multiplexed audio; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelMesh">
+            <summary>MSH files, MESH files; Defined in RFC 2077, SILO files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioBasic">
+            <summary>mulaw audio at 8 kHz, 1 channel; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoOgg">
+            <summary>Ogg Theora or other video (with audio); Defined in RFC 5334</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioOgg">
+            <summary>Ogg Vorbis, Speex, Flac and other audio; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationOgg">
+            <summary>Ogg, a multimedia bitstream container format; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXopXml">
+            <summary>OP</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOasisOpendocumentGraphics">
+            <summary>OpenDocument Graphics; Registered[14]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOasisOpendocumentPresentation">
+            <summary>OpenDocument Presentation; Registered[13]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOasisOpendocumentSpreadsheet">
+            <summary>OpenDocument Spreadsheet; Registered[12]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationVndOasisOpendocumentText">
+            <summary>OpenDocument Text; Registered[11]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXPkcs12">
+            <summary>p12 files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXPkcs7Certificates">
+            <summary>p7b and spc files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXPkcs7Mime">
+            <summary>p7c files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXPkcs7Certreqresp">
+            <summary>p7r files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXPkcs7Signature">
+            <summary>p7s files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationPdf">
+            <summary>Portable Document Format, PDF has been in use for document exchange on the Internet since 1993; Defined in RFC 3778</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImagePng">
+            <summary>Portable Network Graphics; Registered,[8] Defined in RFC 2083</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationPostscript">
+            <summary>PostScript; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoQuicktime">
+            <summary>QuickTime video; Registered[10]</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXRarCompressed">
+            <summary>RAR archive files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioVndRnRealaudio">
+            <summary>RealAudio; Documented in RealPlayer Customer Support Answer 2559</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationRdfXml">
+            <summary>Resource Description Framework; Defined by RFC 3870</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationRssXml">
+            <summary>RSS feeds</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationSoapXml">
+            <summary>SOAP; Defined by RFC 3902</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXStuffit">
+            <summary>StuffIt archive files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImageSvgXml">
+            <summary>SVG vector image; Defined in SVG Tiny 1.2 Specification Appendix M</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ImageTiff">
+            <summary>Tag Image File Format (only for Baseline TIFF); Defined in RFC 3302</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXTar">
+            <summary>Tarball files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextPlain">
+            <summary>Textual data; Defined in RFC 2046 and RFC 3676</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXFontTtf">
+            <summary>TrueType Font No registered MIME type, but this is the most commonly used</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.TextVcard">
+            <summary>vCard (contact information); Defined in RFC 6350</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioVorbis">
+            <summary>Vorbis encoded audio; Defined in RFC 5215</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioVndWave">
+            <summary>WAV audio; Defined in RFC 2361</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationFontWoff">
+            <summary>Web Open Font Format; (candidate recommendation; use application/x-font-woff until standard is official)</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoWebm">
+            <summary>WebM Matroska-based open media format</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioWebm">
+            <summary>WebM open media format</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioXMsWax">
+            <summary>Windows Media Audio Redirector; Documented in Microsoft help page</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.AudioXMsWma">
+            <summary>Windows Media Audio; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.VideoXMsWmv">
+            <summary>Windows Media Video; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelVrml">
+            <summary>WRL files, VRML files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelX3DXml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3D XML files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelX3DBinary">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DB binary files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ModelX3DVrml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DV VRML files</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationXhtmlXml">
+            <summary>XHTML; Defined by RFC 3236</summary>
+        </member>
+        <member name="F:AfarsoftResourcePlan.Net.MimeTypes.MimeTypeNames.ApplicationZip">
+            <summary>ZIP archive files; Registered[7]</summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.Roles.RoleAppService.Create(AfarsoftResourcePlan.Roles.Dto.CreateRoleDto)">
+            <summary>
+            创建角色
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput">
+            <summary>
+            获取单据编码
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput.SerialNumberDate">
+            <summary>
+            生成日期
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput.OrderType">
+            <summary>
+            单据类型
+            </summary>
+        </member>
+        <member name="P:AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput.OrganizationId">
+            <summary>
+            机构编码
+            </summary>
+        </member>
+        <member name="M:AfarsoftResourcePlan.SerialNumber.ISerialNumberAppService.GetOrderCode(AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput)">
+            <summary>
+            制单时获取单据编码（不更新数据库）
+            </summary>
+            <param name="NumberInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.SerialNumber.SerialNumberAppService.GetAndUpdateOrderCode(AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput)">
+            <summary>
+            制单时获取单据编码（更新数据库）
+            </summary>
+            <param name="NumberInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AfarsoftResourcePlan.SerialNumber.SerialNumberAppService.GetOrderCode(AfarsoftResourcePlan.SerialNumber.Dto.GetSerialNumberInput)">
+            <summary>
+            制单时获取单据编码（不更新数据库）
+            </summary>
+            <param name="NumberInput"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

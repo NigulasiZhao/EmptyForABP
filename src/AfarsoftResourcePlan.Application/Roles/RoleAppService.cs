@@ -29,7 +29,11 @@ namespace AfarsoftResourcePlan.Roles
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
+        /// <summary>
+        /// 创建角色
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override async Task<RoleDto> Create(CreateRoleDto input)
         {
             CheckCreatePermission();

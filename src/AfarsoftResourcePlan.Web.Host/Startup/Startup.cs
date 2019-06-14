@@ -18,6 +18,7 @@ using AfarsoftResourcePlan.Identity;
 using Abp.AspNetCore.SignalR.Hubs;
 using Microsoft.AspNetCore.Mvc;
 using AfarsoftResourcePlan.Json;
+using System.IO;
 
 namespace AfarsoftResourcePlan.Web.Host.Startup
 {
@@ -79,6 +80,8 @@ namespace AfarsoftResourcePlan.Web.Host.Startup
                     In = "header",
                     Type = "apiKey"
                 });
+                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AfarsoftResourcePlan.Application.xml"));
+
             });
 
             // Configure Abp and Dependency Injection
