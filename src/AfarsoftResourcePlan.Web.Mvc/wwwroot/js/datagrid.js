@@ -419,7 +419,8 @@ var DG = {
                     }
                 } else {
                     for (var j = 0; j < AllRows.length; j++) {
-                        if (AllRows[j].id == goodsRowsData[i].id) {
+                        //if (AllRows[j].id == goodsRowsData[i].id) {
+                        if ((AllRows[j].goodsId && AllRows[j].goodsId == goodsRowsData[i].id) || AllRows[j].id == goodsRowsData[i].id) {
                             if (Location == -1) {
                                 Location = j;
                             }
