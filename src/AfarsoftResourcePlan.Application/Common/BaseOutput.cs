@@ -81,7 +81,7 @@ namespace AfarsoftResourcePlan.Common
         /// <summary>
         /// 合计字段
         /// </summary>
-        public object footer { get; set; }
+        public object Footer { get; set; }
         /// <summary>
         /// 总数据条数
         /// </summary>
@@ -92,7 +92,7 @@ namespace AfarsoftResourcePlan.Common
         public BasePageDataOutput(List<T> data, int totalCount, object footer = null, int code = 0, string message = "")
         {
             this.Rows = data;
-            this.footer = footer;
+            this.Footer = footer;
             this.Code = code;
             this.Message = message;
             this.Total = totalCount;

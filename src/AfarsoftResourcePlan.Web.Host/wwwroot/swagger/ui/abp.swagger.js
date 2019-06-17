@@ -45,9 +45,9 @@ var abp = abp || {};
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var responseJSON = JSON.parse(xhr.responseText);
-                    var result = responseJSON.result;
-                    var expireDate = new Date(Date.now() + (result.expireInSeconds * 1000));
-                    abp.auth.setToken(result.accessToken, expireDate);
+                    var result = responseJSON.Result;
+                    var expireDate = new Date(Date.now() + (result.ExpireInSeconds * 1000));
+                    abp.auth.setToken(result.AccessToken, expireDate);
                     callback();   
                 } else {
                     alert('Login failed !');
@@ -70,9 +70,9 @@ var abp = abp || {};
             xhrTenancyName.onreadystatechange = function () {
                 if (xhrTenancyName.readyState === XMLHttpRequest.DONE && xhrTenancyName.status === 200) {
                     var responseJSON = JSON.parse(xhrTenancyName.responseText);
-                    var result = responseJSON.result;
-                    if (result.state === 1) { // Tenant exists and active.
-                        loginUserInternal(result.tenantId, callback); // Login for tenant    
+                    var result = responseJSON.Result;
+                    if (result.State === 1) { // Tenant exists and active.
+                        loginUserInternal(result.TenantId, callback); // Login for tenant    
                     } else {
                         alert('There is no such tenant or tenant is not active !');
                     }

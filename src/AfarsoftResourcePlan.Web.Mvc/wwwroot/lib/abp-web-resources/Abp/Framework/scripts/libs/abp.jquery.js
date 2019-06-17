@@ -133,31 +133,31 @@
 
         handleResponse: function (data, userOptions, $dfd, jqXHR) {
             if (data) {
-                if (data.success === true) {
-                    $dfd && $dfd.resolve(data.result, data, jqXHR);
-                    userOptions.success && userOptions.success(data.result, data, jqXHR);
+                if (data.Success === true) {
+                    $dfd && $dfd.resolve(data.Result, data, jqXHR);
+                    userOptions.success && userOptions.success(data.Result, data, jqXHR);
 
-                    if (data.targetUrl) {
-                        abp.ajax.handleTargetUrl(data.targetUrl);
+                    if (data.TargetUrl) {
+                        abp.ajax.handleTargetUrl(data.TargetUrl);
                     }
-                } else if (data.success === false) {
+                } else if (data.Success === false) {
                     var messagePromise = null;
 
                     if (data.error) {
                         if (userOptions.abpHandleError !== false) {
-                            messagePromise = abp.ajax.showError(data.error);
+                            messagePromise = abp.ajax.showError(data.Error);
                         }
                     } else {
-                        data.error = abp.ajax.defaultError;
+                        data.Error = abp.ajax.defaultError;
                     }
 
-                    abp.ajax.logError(data.error);
+                    abp.ajax.logError(data.Error);
 
-                    $dfd && $dfd.reject(data.error, jqXHR);
-                    userOptions.error && userOptions.error(data.error, jqXHR);
+                    $dfd && $dfd.reject(data.Error, jqXHR);
+                    userOptions.error && userOptions.error(data.Error, jqXHR);
 
                     if (jqXHR.status === 401 && userOptions.abpHandleError !== false) {
-                        abp.ajax.handleUnAuthorizedRequest(messagePromise, data.targetUrl);
+                        abp.ajax.handleUnAuthorizedRequest(messagePromise, data.TargetUrl);
                     }
                 } else { //not wrapped result
                     $dfd && $dfd.resolve(data, null, jqXHR);

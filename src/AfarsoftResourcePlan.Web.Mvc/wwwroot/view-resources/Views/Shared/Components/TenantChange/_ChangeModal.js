@@ -16,9 +16,9 @@
         _accountService.isTenantAvailable({
             tenancyName: tenancyName
         }).done(function (result) {
-            switch (result.state) {
-            case 1: //Available
-                abp.multiTenancy.setTenantIdCookie(result.tenantId);
+            switch (result.State) {
+                case 1: //Available
+                abp.multiTenancy.setTenantIdCookie(result.TenantId);
                 //_modalManager.close();
                 location.reload();
                 return;

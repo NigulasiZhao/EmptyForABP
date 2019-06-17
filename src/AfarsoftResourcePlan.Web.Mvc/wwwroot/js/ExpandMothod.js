@@ -159,7 +159,26 @@ $.extend($.fn.datagrid.defaults, {
     showFooter: true,
     //是否显示斑马线效果;同一行中显示数据;显示一个行号列;只允许选择一行
     striped: false, nowrap: true, rownumbers: true, singleSelect: true,
-    pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1
+    pagination: true, pageSize: 20, pageList: [20, 50, 100, 150, 200], pageNumber: 1,
+    loadFilter: function (data) {
+        if (data instanceof Array) {
+            return data;
+        }
+        var finalData = {};
+        if (!data.rows && data.Result && data.Result.Rows) {
+            finalData.rows = data.Result.Rows;
+        }
+        if (!data.footer && data.Result && data.Result.Footer) {
+            var arr = [{}];
+            arr.push(data.result.Footer);
+            finalData.footer = arr;
+        }
+        if (!data.total && data.Result && data.Result.Total) {
+            finalData.total = data.Result.Total;
+        }
+        return finalData;
+    },
+    method: "get"
 });
 $.extend($.fn.treegrid.defaults, {
     loadFilter: function (data) {
@@ -672,13 +691,13 @@ function checkIpt(target) {
 
 function TabsChange(modalOrDiv, index, isShow) {
     if (modalOrDiv) {
-        var tabs = $tabs("."+modalOrDiv + " .tab-head span");
-        var contents = $tabs("."+modalOrDiv + " .tab-content").children("div");
+        var tabs = $tabs("." + modalOrDiv + " .tab-head span");
+        var contents = $tabs("." + modalOrDiv + " .tab-content").children("div");
     } else {
         var tabs = $tabs(".tab-head span");
         var contents = $tabs(".tab-content").children("div");
     }
-   
+
 
     tabs.eq(0).addClass('selected');
     tabs.eq(0).siblings().removeClass("selected");
