@@ -181,6 +181,7 @@
     <text name="nav_test_8">制单页</text>
     <text name="nav_test_9">设置页</text>
     <text name="nav_test_10">权限页</text>
+    <text name="nav_test_11">调价单</text>
   </texts>
 </localizationDictionary>
 

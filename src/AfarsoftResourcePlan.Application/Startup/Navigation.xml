@@ -24,6 +24,8 @@
           </menu>
           <menu name="sale_saleOrder_saleOrderList2" displayName="nav_test_10" icon="" url="/test/Permission" requiredPermissionName="Permission_Sale_SaleOrderList">
           </menu>
+          <menu name="sale_saleOrder_saleOrderList4" displayName="nav_test_11" icon="" url="/test/ChangePrice" requiredPermissionName="Permission_Sale_SaleOrderList">
+          </menu>
         </subItems>
       </menu>
     </subTitle>
