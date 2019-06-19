@@ -459,6 +459,31 @@ function subindexMenu() {
         $('.listbox').eq(i).children('dl').css('height', parseInt($('.listbox').eq(i).height()) + 'px');
     }
 }
+//展示的数字处理,1表示价格，2表示数量
+function FormatDecima(value, valueType) {
+    if (!value) {
+        value = 0;
+    }
+    else {
+        value = parseFloat(value);
+    }
+    if (localStorage["LastPlace"] == 1) {
+        if (valueType == 1) {
+            return parseFloat(value.toFixed(localStorage["DecimalDigits"]));
+        }
+        else {
+            return parseFloat(value.toFixed(localStorage["CountDigits"]));
+        }
+    } else if (localStorage["LastPlace"] == 0) {
+        if (valueType == 1) {
+            return value.toFixed(localStorage["DecimalDigits"]);
+        } else {
+            return value.toFixed(localStorage["CountDigits"]);
+        }
+    } else {
+        return value;
+    }
+}
 
 (function ($) {
 
