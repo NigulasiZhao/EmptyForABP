@@ -97,5 +97,13 @@ namespace AfarsoftResourcePlan.Web.Mvc.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 调价单
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult TreeGrid()
+        {
+            return View();
+        }
     }
 }
