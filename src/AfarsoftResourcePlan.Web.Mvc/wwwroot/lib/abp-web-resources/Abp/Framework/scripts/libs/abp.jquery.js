@@ -81,8 +81,8 @@
         },
 
         showError: function (error) {
-            if (error.details) {
-                return abp.message.error(error.details, error.message);
+            if (error.Details) {
+                return abp.message.error(error.Details, error.Message);
             } else {
                 return abp.message.error(error.message || abp.ajax.defaultError.message);
             }
