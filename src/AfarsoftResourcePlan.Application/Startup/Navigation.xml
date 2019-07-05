@@ -18,6 +18,8 @@
           </menu>
           <menu name="base_Erp_Roles" displayName="nav_test_7" icon="" url="/test/GoodsList" requiredPermissionName="Permission_Erp_Roles">
           </menu>
+          <menu name="base_Erp_TreeGrid" displayName="nav_test_12" icon="" url="/test/TreeGrid" requiredPermissionName="Permission_Erp_Roles">
+          </menu>
           <menu name="sale_saleOrder_newsaleOrder" displayName="nav_test_8" icon="" url="/test/Order" requiredPermissionName="Permission_Sale_NewSaleOrder">
           </menu>
           <menu name="sale_saleOrder_saleOrderList" displayName="nav_test_9" icon="" url="/test/Setting" requiredPermissionName="Permission_Sale_SaleOrderList">

@@ -31,35 +31,40 @@
     </environment>
 }
 <div class="card" id="﻿LoginArea">
-    <div class="body">
+    <div class="body login-body">
         <form id="LoginForm" asp-action="Login" method="post">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
             <input type="hidden" name="returnUrlHash" />
-            <h4 class="text-center">@L("LogIn")</h4>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">person</i>
-                </span>
-                <div class="form-line">
-                    <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+            @*<h4 class="text-center">@L("LogIn")</h4>*@
+            <div class="login-title">
+                <img src="~/images/login_title.png" />
+                @*<span>云收银</span>*@
+                <span>企业后台登录</span>
+            </div>
+            <div class="input-group" style="margin-bottom:18px;">
+                @*<span class="input-group-addon">
+                <i class="material-icons">person</i>
+            </span>*@
+                <div class="form-line login-iptBox">
+                    @*<img src="~/images/usericon.png" class="login-icon" />*@
+                    <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="手机号" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
                 </div>
             </div>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">lock</i>
-                </span>
-                <div class="form-line">
+            <div class="input-group" style="margin-bottom:18px;">
+                @*<span class="input-group-addon">
+                <i class="material-icons">lock</i>
+            </span>*@
+                <div class="form-line login-iptBox">
+                    @*<img src="~/images/passwordicon.png" class="login-icon" />*@
                     <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-8 p-t-5">
-                    <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
-                    <label for="rememberme">@L("RememberMe")</label>
-                </div>
-                <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
-                </div>
+            <div>
+                <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
+                <label for="rememberme">@L("RememberMe")</label>
+            </div>
+            <div style="margin-top:30px;">
+                <button id="LoginButton" class="btn btn-block waves-effect" type="submit">@L("LogIn")</button>
             </div>
             @if (Model.IsSelfRegistrationAllowed)
             {

@@ -4966,8 +4966,8 @@ section.content_nav {
     .input-group .form-line:after {
       content: '';
       position: absolute;
-      left: 0;
-      width: 100%;
+      left: 10px;
+      width: calc(100% - 20px);
       bottom: -2px;
       -moz-transform: scaleX(0);
       -ms-transform: scaleX(0);
@@ -7729,16 +7729,98 @@ fieldset[disabled] .form-control {
 
 /* Login Page ================================== */
 .login-page {
-  background-color: #00BCD4;
-  padding-left: 0;
-  max-width: 360px!important;
-  min-width:unset!important;
-  margin: 5% auto;
-  overflow-x: hidden; }
-  .login-page .login-box .msg {
+    position: relative;
+    background: url("../images/login_bg.png") no-repeat center;
+    background-size: contain;
+    overflow-x: auto;
+}
+/*.login-page {
+    height:100%;
+    position: relative;
+    background: url("../images/login_background.png") no-repeat center;
+    background-size: cover;
+    overflow-x: auto;
+}*/
+.login-page .login-box {
+    width: 425px;
+    position: absolute;
+    right: 15%;
+    top: 15%;
+}
+/*.login-page .login-box {
+    width: 790px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}*/
+.login-body {
+    padding: 40px 30px 60px!important;
+}
+/*.login-body {
+    padding: 76px 178px 60px!important;
+}*/
+.login-companyMark {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    font-size: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.login-title{
+    font-size:28px;
+    margin-bottom:50px;
+}
+/*.login-title {
+    font-size: 28px;
+    margin-bottom: 38px;
+    text-align:center;
+}*/
+.login-iptBox {
+    border: none !important;
+    position: relative;
+}
+.login-icon{
+    width:24px;
+    height:28px;
+    position:absolute;
+    left:20px;
+    top:13px;
+    z-index:4;
+}
+.login-iptBox input {
+    border: 2px solid #ddd !important;
+    border-radius: 10px !important;
+    padding: 0 20px !important;
+    height: 48px !important;
+    line-height: 48px !important;
+}
+/*.login-iptBox input {
+    border: 2px solid #ddd!important;
+    border-radius: 10px!important;
+    padding: 0 65px !important;
+    height: 54px !important;
+    line-height: 54px !important;
+}*/
+.login-title img {
+    height: 42px;
+    margin-top: -14px;
+}
+#LoginButton {
+    padding: 0 !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    background: #1493fa;
+    border-radius: 10px!important;
+}
+.login-page .login-box .msg {
     color: #555;
     margin-bottom: 30px;
-    text-align: center; }
+    text-align: center;
+}
   .login-page .login-box a {
     font-size: 14px;
     text-decoration: none;
