@@ -143,7 +143,7 @@
                 } else if (data.Success === false) {
                     var messagePromise = null;
 
-                    if (data.error) {
+                    if (data.Error) {
                         if (userOptions.abpHandleError !== false) {
                             messagePromise = abp.ajax.showError(data.Error);
                         }
